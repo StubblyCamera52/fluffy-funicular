@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=5 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 
@@ -6,6 +6,8 @@
 size = Vector3(100, 1, 100)
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ig7tw"]
 
 [node name="main" type="Node3D"]
 
@@ -26,3 +28,6 @@ environment = SubResource("Environment_ig7tw")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.53358495, 0.58911675, -0.6068184, 0, 0.7174944, 0.69656426, 0.84574646, -0.3716762, 0.38284424, 0, 0, 0)
 shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ig7tw")
