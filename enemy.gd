@@ -2,6 +2,15 @@ extends CharacterBody3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
+# enemy config
+@export var movement_speed: float = 5.0
+@export var max_health: int = 100
+@export var damage: int = 2
+
+# enemy vars
+var health := max_health
+
+
 func _ready() -> void:
 	actor_setup.call_deferred()
 	
@@ -19,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var next_location := nav_agent.get_next_path_position()
-	velocity = (next_location - global_position).normalized()*5
+	velocity = global_position.direction_to(next_location)*movement_speed
 	
 	if !is_on_floor():
 		velocity = Vector3(0, -1, 0)
