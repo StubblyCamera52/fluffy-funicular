@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://rss6l1jqgbfp"]
+
+[ext_resource type="Script" uid="uid://bkfascnyveqg4" path="res://enemies/wall_guy.gd" id="1_wxn2a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wxn2a"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thjt0"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wxn2a"]
+radius = 10.0
+
+[node name="WallGuy" type="CharacterBody3D"]
+script = ExtResource("1_wxn2a")
+metadata/_custom_type_script = "uid://dayute38a7ih5"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_wxn2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_thjt0")
+
+[node name="Chargeup" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_wxn2a")
+
+[node name="Charge" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Chargeup" to="." method="_on_chargeup_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Charge" to="." method="_on_charge_timeout"]
