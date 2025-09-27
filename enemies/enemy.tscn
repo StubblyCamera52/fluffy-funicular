@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgxb4xsmsuqga"]
 
-[ext_resource type="Script" uid="uid://dayute38a7ih5" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://dayute38a7ih5" path="res://enemies/enemy.gd" id="1_7k104"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7xaro"]
 

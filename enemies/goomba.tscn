@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://drr3esl1pjkv1"]
+
+[ext_resource type="Script" uid="uid://c2m8fd326ca7v" path="res://enemies/goomba.gd" id="1_0xjyw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xjyw"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k53gf"]
+albedo_color = Color(1, 0.12156863, 0.12156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ac7lm"]
+material = SubResource("StandardMaterial3D_k53gf")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0xjyw"]
+radius = 15.0
+
+[node name="Goomba" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_0xjyw")
+metadata/_custom_type_script = "uid://dayute38a7ih5"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0xjyw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ac7lm")
+
+[node name="TargetingArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetingArea"]
+shape = SubResource("SphereShape3D_0xjyw")
+
+[connection signal="body_entered" from="TargetingArea" to="." method="_on_targeting_area_body_entered"]
+[connection signal="body_exited" from="TargetingArea" to="." method="_on_targeting_area_body_exited"]
