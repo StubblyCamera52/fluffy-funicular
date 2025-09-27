@@ -7,15 +7,30 @@ extends CharacterBody3D
 @export_range(0.01, 1) var mouse_sens := 0.01
 @export var cam_tilt_limit := deg_to_rad(75)
 
+#player vars
+var mouse_locked := true
+
 
 const SPEED = 20
 const JUMP_VELOCITY = 4.5
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("unlock_mouse"):
+		mouse_locked = !mouse_locked
+		match mouse_locked:
+			true:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			false:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and mouse_locked:
 		_camera_pivot.rotation.x -= event.relative.y * mouse_sens
-		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.y, -cam_tilt_limit, cam_tilt_limit)
-		_camera_pivot.rotation.y += event.relative.x * mouse_sens
+		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -cam_tilt_limit, cam_tilt_limit)
+		_camera_pivot.rotation.y -= event.relative.x * mouse_sens
 
 
 func _physics_process(delta: float) -> void:
