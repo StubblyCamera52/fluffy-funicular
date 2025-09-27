@@ -1,8 +1,10 @@
 extends Enemy
 
 var target_player = null
+var firing = false
 var target_rotation = 0
-@export_range(0,5) var ROTATE_SPEED := 5
+@export var ROTATE_SPEED := 5
+@export var BULLET_SPEED = 10
 var bullet_scene = preload("res://assets/objects/bullet.tscn")
 
 func take_damage(dmg_amount: int) -> void:
@@ -27,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector3.ZERO
 	
 	if target_player != null:
-		var player_pos: Vector3 = target_player.global_position
+		var player_pos: Vector3 = target_player.global_position+target_player.velocity/3
 		var direction: float = PI/2-Vector2(global_position.direction_to(player_pos).x,global_position.direction_to(player_pos).z).angle()
 		rotation.y = lerp_angle(rotation.y, direction, ROTATE_SPEED*delta)
 		
@@ -42,7 +44,7 @@ func shoot_bullet(target_pos: Vector3):
 	var bullet: RigidBody3D = bullet_scene.instantiate()
 	get_parent_node_3d().add_child(bullet)
 	bullet.position = global_position + Vector3(0,.5,0)
-	bullet.apply_central_impulse((target_pos-global_position).normalized()*10)
+	bullet.apply_central_impulse((target_pos-global_position).normalized()*BULLET_SPEED)
 	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -56,5 +58,8 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
-	if target_player != null:
-		shoot_bullet(target_player.global_position)
+	firing = !firing
+
+func _on_rapid_fire_timer_timeout() -> void:
+	if target_player != null and firing:
+		shoot_bullet(target_player.global_position+target_player.velocity/3)
