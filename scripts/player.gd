@@ -56,6 +56,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			player_velocity.y=JUMP_VELOCITY
 	if event.is_action_pressed("Attack") and attack_time==0:
 		attack_time=0.35
+		for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
+			body.take_damage(400)
 		_playerAnimator.playback_default_blend_time = 0.05
 		_playerAnimator.play("Slash")
 

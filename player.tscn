@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://6ru8poy7tgm4"]
+[gd_scene load_steps=6 format=3 uid="uid://6ru8poy7tgm4"]
 
 [ext_resource type="Script" uid="uid://cfwk60q5jp5wb" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://6ds03put2t5t" path="res://assets/objects/player_model.tscn" id="2_onrkg"]
@@ -8,6 +8,9 @@ height = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.6, 1, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(2.5, 2, 1.371)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -43,4 +46,14 @@ shape = SubResource("BoxShape3D_4flbx")
 
 [node name="PlayerModel" parent="." instance=ExtResource("2_onrkg")]
 
+[node name="AttackCollider" type="Area3D" parent="PlayerModel"]
+transform = Transform3D(2.2727273, 0, 0, 0, 2.2727273, 0, 0, 0, 2.2727273, 0, 1.5717872, 1.7930106)
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/AttackCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06323242, 0, -0.13342285)
+shape = SubResource("BoxShape3D_onrkg")
+
 [connection signal="body_entered" from="EnemyCollisionArea" to="." method="_on_enemy_collision_area_body_entered"]
+[connection signal="body_entered" from="PlayerModel/AttackCollider" to="." method="_on_attack_collider_body_entered"]

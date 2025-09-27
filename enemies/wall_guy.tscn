@@ -12,6 +12,8 @@ size = Vector3(3, 3, 0.5)
 radius = 10.0
 
 [node name="WallGuy" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_wxn2a")
 metadata/_custom_type_script = "uid://dayute38a7ih5"
 
