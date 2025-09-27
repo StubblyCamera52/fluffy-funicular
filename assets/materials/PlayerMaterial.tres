@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b41cpdmsprdjk"]
+
+[ext_resource type="Texture2D" uid="uid://d2jglleejrvbm" path="res://assets/textures/funicular goober_funicular goober tex.png" id="1_cegc2"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_cegc2")
+texture_filter = 0

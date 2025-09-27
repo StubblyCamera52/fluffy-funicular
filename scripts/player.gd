@@ -3,8 +3,10 @@ extends CharacterBody3D
 # Node imports
 @onready var _camera := %Camera3D as Camera3D
 @onready var _camera_pivot := %CameraPivot as Node3D
+@onready var _playerAnimator: AnimationPlayer = $PlayerModel/AnimationPlayer
+@onready var _playerModel: Node3D = $PlayerModel
 
-@export_range(0.01, 1) var mouse_sens := 0.01
+@export_range(0, 1) var mouse_sens := 0.01
 @export var cam_tilt_limit := deg_to_rad(75)
 
 # Player Movement Config
@@ -18,15 +20,13 @@ var mouse_locked := true
 
 # player state vars
 enum PLAYER_STATES {
-	IDLE,
+	BASIC,
 	MOVEMENT_DISABLE,
 	IN_MENU,
 	ATTACKING,
-	WALKING,
-	JUMPING,
 }
 
-var current_player_state: PLAYER_STATES = PLAYER_STATES.WALKING
+var current_player_state: PLAYER_STATES = PLAYER_STATES.BASIC
 var player_velocity := Vector3.ZERO
 var player_direction := Vector3.ZERO
 var player_input_direction := Vector2.ZERO
@@ -53,7 +53,17 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# State Machine
 	match current_player_state:
-		PLAYER_STATES.WALKING:
+		PLAYER_STATES.BASIC:
+			if player_velocity.length()>0:
+				_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
+				
+			_playerAnimator.set_blend_time("Walk","Idle",0.25)
+			if player_velocity.length() > 3:
+				_playerAnimator.play("Walk",-1,player_velocity.length()/10)
+				#_playerAnimator.speed_scale = 5
+			else:
+				_playerAnimator.play("Idle")
+			
 			player_input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward", 0.5)
 			player_direction = (transform.basis * Vector3(player_input_direction.x, 0, player_input_direction.y)).normalized().rotated(Vector3.UP, %CameraPivot.rotation.y)
 			if player_direction != Vector3.ZERO:
