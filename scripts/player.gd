@@ -10,9 +10,23 @@ extends CharacterBody3D
 #player vars
 var mouse_locked := true
 
+# player state vars
+enum PLAYER_STATES {
+	IDLE,
+	IN_MENU,
+	WALKING,
+	JUMPING,
+}
+var current_player_state: PLAYER_STATES = PLAYER_STATES.WALKING
+var player_velocity := Vector3.ZERO
+var player_direction := Vector3.ZERO
+var player_input_direction := Vector2.ZERO
 
-const SPEED = 20
-const JUMP_VELOCITY = 4.5
+# Player Movement Config
+@export var MAX_SPEED := 20.0
+@export var ACCELERATION := 2.0
+@export var DECELERATION := 0.9
+@export var JUMP_VELOCITY := 4.5
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -35,22 +49,24 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+		
+	match current_player_state:
+		PLAYER_STATES.WALKING:
+			player_input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward", 0.5)
+			player_direction = (transform.basis * Vector3(player_input_direction.x, 0, player_input_direction.y)).normalized().rotated(Vector3.UP, %CameraPivot.rotation.y)
+
+
+	if player_direction != Vector3.ZERO:
+		player_velocity.x += player_direction.x * ACCELERATION
+		player_velocity.z += player_direction.z * ACCELERATION
+		player_velocity.x *= DECELERATION
+		player_velocity.z *= DECELERATION
+	else:
+		player_velocity.x *= DECELERATION
+		player_velocity.z *= DECELERATION
+		
+	
+	velocity = player_velocity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
 	move_and_slide()
