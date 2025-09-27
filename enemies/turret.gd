@@ -3,6 +3,7 @@ extends Enemy
 var target_player = null
 var target_rotation = 0
 @export_range(0,5) var ROTATE_SPEED := 5
+var bullet_scene = preload("res://assets/objects/bullet.tscn")
 
 func take_damage(dmg_amount: int) -> void:
 	health -= dmg_amount
@@ -37,6 +38,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func shoot_bullet(target_pos: Vector3):
+	var bullet: RigidBody3D = bullet_scene.instantiate()
+	get_parent_node_3d().add_child(bullet)
+	bullet.position = global_position + Vector3(0,.5,0)
+	bullet.apply_central_impulse((target_pos-global_position).normalized()*10)
+	
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		target_player = body
@@ -45,3 +53,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == target_player:
 		target_player = null
+
+
+func _on_shoot_timer_timeout() -> void:
+	if target_player != null:
+		shoot_bullet(target_player.global_position)

@@ -11,6 +11,8 @@ func die() -> void:
 	queue_free()
 
 func _ready() -> void:
+	identifier = "enemy"
+	damage = 5
 	actor_setup.call_deferred()
 	
 func actor_setup():

@@ -79,6 +79,7 @@ Special={
 3d_physics/layer_2="player"
 3d_physics/layer_3="dynamic_level"
 3d_physics/layer_4="enemies"
+3d_physics/layer_9="projectile"
 
 [rendering]
 

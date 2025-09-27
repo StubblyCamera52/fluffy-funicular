@@ -6,7 +6,8 @@ extends CharacterBody3D
 # enemy config
 @export var movement_speed: float = 5.0
 @export var health: int = 100
-@export var damage: int = 2
+@export var damage: int = 0
+@export var identifier := "enemy"
 
 func take_damage(dmg_amount: int) -> void:
 	health -= dmg_amount

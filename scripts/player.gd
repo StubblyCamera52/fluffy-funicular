@@ -102,4 +102,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_enemy_collision_area_body_entered(body: Node3D) -> void:
 	if body.damage:
+		print(body.identifier)
+		if body.identifier == "bullet":
+			body.queue_free()
 		PlayerGlobalManager.damage_player(body.damage)
