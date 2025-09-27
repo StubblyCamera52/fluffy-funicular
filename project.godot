@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="fluffy-funicular"
+run/main_scene="uid://501gglmoon7g"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+3d_physics/layer_1="static_level"
+3d_physics/layer_2="player"
+3d_physics/layer_3="dynamic_level"
+3d_physics/layer_4="enemies"
 
 [rendering]
 
