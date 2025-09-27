@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var _camera := %Camera3D as Camera3D
 @onready var _camera_pivot := %CameraPivot as Node3D
 
-@export_range(0.01, 1) var mouse_sens := 0.01
+@export_range(0, 1) var mouse_sens := 0.01
 @export var cam_tilt_limit := deg_to_rad(75)
 
 # Player Movement Config

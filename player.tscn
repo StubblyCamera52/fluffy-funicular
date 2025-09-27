@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://6ru8poy7tgm4"]
 
 [ext_resource type="Script" uid="uid://cfwk60q5jp5wb" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://6ds03put2t5t" path="res://assets/objects/player_model.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
-albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.6, 1, 0.6)
@@ -19,11 +17,6 @@ script = ExtResource("1_4flbx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-size = Vector3(0.5, 1.5, 0.5)
-material = SubResource("StandardMaterial3D_4flbx")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -45,5 +38,7 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyCollisionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55068064, 0)
 shape = SubResource("BoxShape3D_4flbx")
+
+[node name="PlayerModel" parent="." instance=ExtResource("2_onrkg")]
 
 [connection signal="body_entered" from="EnemyCollisionArea" to="." method="_on_enemy_collision_area_body_entered"]
