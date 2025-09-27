@@ -73,6 +73,13 @@ Special={
 ]
 }
 
+[internationalization]
+
+rendering/size/viewport_height=360
+rendering/size/viewport_width=640
+rendering/stretch/mode="viewport"
+rendering/size/resizable=true
+
 [layer_names]
 
 3d_physics/layer_1="static_level"

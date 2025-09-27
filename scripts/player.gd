@@ -18,8 +18,7 @@ extends CharacterBody3D
 
 #player vars
 var mouse_locked := true
-enum animstates {grounded, midair, attack}
-var animstate = animstates.grounded
+var attack_time = 0
 
 # player state vars
 enum PLAYER_STATES {
@@ -46,25 +45,40 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if event.is_action_pressed("Jump"):
-		if is_on_floor():
-			player_velocity.y=JUMP_VELOCITY
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_locked:
 		_camera_pivot.rotation.x -= event.relative.y * mouse_sens
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -cam_tilt_limit, cam_tilt_limit)
 		_camera_pivot.rotation.y -= event.relative.x * mouse_sens
+	if event.is_action_pressed("Jump"):
+		if is_on_floor():
+			player_velocity.y=JUMP_VELOCITY
+	if event.is_action_pressed("Attack") and attack_time==0:
+		attack_time=0.35
+		_playerAnimator.playback_default_blend_time = 0.05
+		_playerAnimator.play("Slash")
 
 func _physics_process(delta: float) -> void:
+	if attack_time>0:
+		current_player_state=PLAYER_STATES.ATTACKING
+		attack_time=move_toward(attack_time,0,delta)
+	else:
+		current_player_state=PLAYER_STATES.BASIC
+	
+	
 	# State Machine
-	print(player_velocity)
 	match current_player_state:
 		PLAYER_STATES.BASIC:
+			_playerAnimator.set_blend_time("Walk","Fall",0.1)
+			_playerAnimator.set_blend_time("Idle","Fall",0.1)
 			if player_velocity.length()>0:
 					_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
 			if is_on_floor():
-				_playerAnimator.playback_default_blend_time = 0
+				if _playerAnimator.current_animation==("Slash"):
+					_playerAnimator.playback_default_blend_time = 0.1
+				else:
+					_playerAnimator.playback_default_blend_time = 0
 				_playerAnimator.set_blend_time("Walk","Idle",0.25)
 				if player_velocity.length() > 3:
 					_playerAnimator.play("Walk",-1,player_velocity.length()/10)
@@ -82,6 +96,8 @@ func _physics_process(delta: float) -> void:
 			if player_direction != Vector3.ZERO:
 				player_velocity.x += player_direction.x * ACCELERATION
 				player_velocity.z += player_direction.z * ACCELERATION
+		PLAYER_STATES.ATTACKING:
+			_playerAnimator.playback_default_blend_time = 0.25
 
 
 
