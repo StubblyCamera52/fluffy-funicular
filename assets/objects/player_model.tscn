@@ -43,6 +43,3 @@ bones/27/scale = Vector3(1.0000011, 0.99999714, 1.0000019)
 bones/29/position = Vector3(-0.332707, 0.6725303, 1.0339068)
 bones/30/position = Vector3(-0.332707, 0.3275431, 2.062024e-08)
 bones/30/rotation = Quaternion(0.8737428, -0.011909472, 0.0066268384, 0.48619726)
-
-[node name="AnimationPlayer" parent="." index="1"]
-blend_times = [&"Idle", &"Fall", 5.0, &"Idle", &"Idle", 5.0, &"Idle", &"Jump", 5.0, &"Idle", &"Slash", 5.0, &"Idle", &"Walk", 5.0]

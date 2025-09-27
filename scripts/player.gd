@@ -13,10 +13,13 @@ extends CharacterBody3D
 @export var MAX_SPEED := 20.0
 @export var ACCELERATION := 2.0
 @export var DECELERATION := 0.9
+@export var GRAVITY_FORCE := 20.0
 @export var JUMP_VELOCITY := 4.5
 
 #player vars
 var mouse_locked := true
+enum animstates {grounded, midair, attack}
+var animstate = animstates.grounded
 
 # player state vars
 enum PLAYER_STATES {
@@ -43,6 +46,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("Jump"):
+		if is_on_floor():
+			player_velocity.y=JUMP_VELOCITY
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_locked:
@@ -52,17 +58,24 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# State Machine
+	print(player_velocity)
 	match current_player_state:
 		PLAYER_STATES.BASIC:
 			if player_velocity.length()>0:
-				_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
-				
-			_playerAnimator.set_blend_time("Walk","Idle",0.25)
-			if player_velocity.length() > 3:
-				_playerAnimator.play("Walk",-1,player_velocity.length()/10)
-				#_playerAnimator.speed_scale = 5
+					_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
+			if is_on_floor():
+				_playerAnimator.playback_default_blend_time = 0
+				_playerAnimator.set_blend_time("Walk","Idle",0.25)
+				if player_velocity.length() > 3:
+					_playerAnimator.play("Walk",-1,player_velocity.length()/10)
+				else:
+					_playerAnimator.play("Idle")
 			else:
-				_playerAnimator.play("Idle")
+				if player_velocity.y > 0:
+					_playerAnimator.play("Jump")
+				else:
+					_playerAnimator.play("Fall")
+				_playerAnimator.playback_default_blend_time = 0.25
 			
 			player_input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward", 0.5)
 			player_direction = (transform.basis * Vector3(player_input_direction.x, 0, player_input_direction.y)).normalized().rotated(Vector3.UP, %CameraPivot.rotation.y)
@@ -76,11 +89,14 @@ func _physics_process(delta: float) -> void:
 	player_velocity.z *= DECELERATION
 	
 	
-	velocity = player_velocity
+	
 	if not is_on_floor():
-		velocity.y = -1
+		player_velocity.y -=GRAVITY_FORCE*delta
 	else:
-		velocity.y = 0
+		if player_velocity.y<0:
+			player_velocity.y = 0
+	
+	velocity = player_velocity
 	move_and_slide()
 
 
