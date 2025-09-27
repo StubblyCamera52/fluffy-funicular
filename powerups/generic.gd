@@ -1,6 +1,8 @@
 extends Resource
 class_name GenericPowerUp
 
+@export var name = "generic"
+
 func activate() -> void:
 	print("activated generic powerup")
 
