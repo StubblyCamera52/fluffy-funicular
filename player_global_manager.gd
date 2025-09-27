@@ -16,18 +16,21 @@ func give_player_xp(xpAmount: int):
 	player_xp += xpAmount
 
 func apply_powerup(powerup: GenericPowerUp):
-	if player_powerups.find_key(powerup.name) != null:
+	if player_powerups.get(powerup.name) != null:
 		return
 	player_powerups.set(powerup.name, powerup)
 	
 	player_powerups[powerup.name].activate()
 	
 func remove_powerup(powerup: GenericPowerUp):
-	player_powerups.erase(powerup.name)
+	if player_powerups.get(powerup.name) != null:
+		player_powerups[powerup.name].deactivate()
+		player_powerups.erase(powerup.name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	apply_powerup(GenericPowerUp.new())
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
