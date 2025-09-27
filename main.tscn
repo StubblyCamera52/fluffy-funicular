@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=8 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="3_h2yge"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -52,3 +53,6 @@ shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="Goomba" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.93077, 1.6414824, 0)
+
+[node name="Turret" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.87181, 2.9214535, 10.457431)
