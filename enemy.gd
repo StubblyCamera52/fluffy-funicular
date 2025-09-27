@@ -1,15 +1,20 @@
+class_name Enemy
 extends CharacterBody3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 # enemy config
 @export var movement_speed: float = 5.0
-@export var max_health: int = 100
+@export var health: int = 100
 @export var damage: int = 2
 
-# enemy vars
-var health := max_health
+func take_damage(dmg_amount: int) -> void:
+	health -= dmg_amount
+	if health <= 0:
+		die()
 
+func die() -> void:
+	queue_free()
 
 func _ready() -> void:
 	actor_setup.call_deferred()

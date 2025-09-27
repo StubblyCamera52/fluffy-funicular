@@ -30,6 +30,7 @@ var player_input_direction := Vector2.ZERO
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	PlayerGlobalManager.set_player_var(self)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("unlock_mouse"):
@@ -46,10 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -cam_tilt_limit, cam_tilt_limit)
 		_camera_pivot.rotation.y -= event.relative.x * mouse_sens
 
-
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-		
 	match current_player_state:
 		PLAYER_STATES.WALKING:
 			player_input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward", 0.5)
@@ -68,5 +66,12 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = player_velocity
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y = -1
+	else:
+		velocity.y = 0
 	move_and_slide()
+
+
+func _on_enemy_collision_area_body_entered(body: Node3D) -> void:
+	if body.damage:
+		PlayerGlobalManager.damage_player(body.damage)

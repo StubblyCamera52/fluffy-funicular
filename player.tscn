@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://6ru8poy7tgm4"]
+[gd_scene load_steps=5 format=3 uid="uid://6ru8poy7tgm4"]
 
 [ext_resource type="Script" uid="uid://cfwk60q5jp5wb" path="res://scripts/player.gd" id="1_4flbx"]
 
@@ -7,6 +7,9 @@ height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
 albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
+size = Vector3(0.6, 1, 0.6)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -34,3 +37,13 @@ spring_length = 5.0
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 unique_name_in_owner = true
 current = true
+
+[node name="EnemyCollisionArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55068064, 0)
+shape = SubResource("BoxShape3D_4flbx")
+
+[connection signal="body_entered" from="EnemyCollisionArea" to="." method="_on_enemy_collision_area_body_entered"]

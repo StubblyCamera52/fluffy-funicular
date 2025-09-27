@@ -4,6 +4,11 @@ var player_health := 100
 var player_xp := 0
 var player_level := 1
 var player_powerups := []
+var player_model: CharacterBody3D
+
+func set_player_var(player: CharacterBody3D):
+	player_model = player
+	
 
 func damage_player(dmgAmount: int):
 	player_health -= dmgAmount
