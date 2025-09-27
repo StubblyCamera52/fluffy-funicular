@@ -7,26 +7,29 @@ extends CharacterBody3D
 @export_range(0.01, 1) var mouse_sens := 0.01
 @export var cam_tilt_limit := deg_to_rad(75)
 
+# Player Movement Config
+@export var MAX_SPEED := 20.0
+@export var ACCELERATION := 2.0
+@export var DECELERATION := 0.9
+@export var JUMP_VELOCITY := 4.5
+
 #player vars
 var mouse_locked := true
 
 # player state vars
 enum PLAYER_STATES {
 	IDLE,
+	MOVEMENT_DISABLE,
 	IN_MENU,
+	ATTACKING,
 	WALKING,
 	JUMPING,
 }
+
 var current_player_state: PLAYER_STATES = PLAYER_STATES.WALKING
 var player_velocity := Vector3.ZERO
 var player_direction := Vector3.ZERO
 var player_input_direction := Vector2.ZERO
-
-# Player Movement Config
-@export var MAX_SPEED := 20.0
-@export var ACCELERATION := 2.0
-@export var DECELERATION := 0.9
-@export var JUMP_VELOCITY := 4.5
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -48,21 +51,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_pivot.rotation.y -= event.relative.x * mouse_sens
 
 func _physics_process(delta: float) -> void:
+	# State Machine
 	match current_player_state:
 		PLAYER_STATES.WALKING:
 			player_input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward", 0.5)
 			player_direction = (transform.basis * Vector3(player_input_direction.x, 0, player_input_direction.y)).normalized().rotated(Vector3.UP, %CameraPivot.rotation.y)
+			if player_direction != Vector3.ZERO:
+				player_velocity.x += player_direction.x * ACCELERATION
+				player_velocity.z += player_direction.z * ACCELERATION
 
 
-	if player_direction != Vector3.ZERO:
-		player_velocity.x += player_direction.x * ACCELERATION
-		player_velocity.z += player_direction.z * ACCELERATION
-		player_velocity.x *= DECELERATION
-		player_velocity.z *= DECELERATION
-	else:
-		player_velocity.x *= DECELERATION
-		player_velocity.z *= DECELERATION
-		
+
+	player_velocity.x *= DECELERATION
+	player_velocity.z *= DECELERATION
+	
 	
 	velocity = player_velocity
 	if not is_on_floor():
