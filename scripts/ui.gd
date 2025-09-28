@@ -6,7 +6,7 @@ func _init() -> void:
 	PlayerGlobalManager.xp_changed.connect(update_xp_next_level_ui)
 	PlayerGlobalManager.xp_changed.connect(update_ability_ui)
 
-func update_player_health_ui() -> void:
+func update_player_health_ui(pos: Vector3) -> void:
 	$MarginContainer/VBoxContainer/health.text = str("Health: "+str(PlayerGlobalManager.player_health))
 
 func update_player_level_ui() -> void:

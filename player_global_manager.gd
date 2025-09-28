@@ -1,6 +1,6 @@
 extends Node
 
-signal took_damage()
+signal took_damage(pos: Vector3)
 signal xp_changed()
 
 var player_health := 100
@@ -19,9 +19,9 @@ func set_player_var(player: CharacterBody3D):
 	xp_changed.emit()
 	player_model = player
 
-func damage_player(dmgAmount: int):
+func damage_player(dmgAmount: int, pos: Vector3):
 	player_health -= dmgAmount
-	took_damage.emit()
+	took_damage.emit(pos)
 	if player_health <= 0:
 		for key in player_powerups:
 			player_powerups[key].deactivate()

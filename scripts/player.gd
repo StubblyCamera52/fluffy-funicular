@@ -47,6 +47,11 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	PlayerGlobalManager.set_player_var(self)
 	PlayerGlobalManager.sacrifice.connect(playSacrificeAnim)
+	PlayerGlobalManager.took_damage.connect(knockback)
+
+func knockback(pos: Vector3):
+	current_player_state = PLAYER_STATES.KNOCKBACK
+	player_velocity = Vector3(global_position-pos).normalized()*Vector3(1,0,1)*50+Vector3.UP*10
 
 func playSacrificeAnim(doorpos: Vector3):
 	current_player_state=PLAYER_STATES.SACRIFICE
@@ -100,6 +105,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			player_velocity.y = 3
 		
 func _physics_process(delta: float) -> void:
+	attack_time=move_toward(attack_time,0,delta)
 	# State Machine
 	match current_player_state:
 		PLAYER_STATES.BASIC:
@@ -130,7 +136,6 @@ func _physics_process(delta: float) -> void:
 			if attack_time < 0.25 and attack_time>0.05:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
 					body.take_damage(10)
-			attack_time=move_toward(attack_time,0,delta)
 			if attack_time<=0:
 				current_player_state=PLAYER_STATES.BASIC
 			_playerAnimator.playback_default_blend_time = 0.25
@@ -160,6 +165,9 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = player_velocity
 	move_and_slide()
+	if is_on_floor():
+		if current_player_state == PLAYER_STATES.KNOCKBACK:
+			current_player_state = PLAYER_STATES.BASIC
 
 
 func _on_enemy_collision_area_body_entered(body: Node3D) -> void:
@@ -167,4 +175,4 @@ func _on_enemy_collision_area_body_entered(body: Node3D) -> void:
 		print(body.identifier)
 		if body.identifier == "bullet":
 			body.queue_free()
-		PlayerGlobalManager.damage_player(body.damage)
+		PlayerGlobalManager.damage_player(body.damage, body.global_position)
