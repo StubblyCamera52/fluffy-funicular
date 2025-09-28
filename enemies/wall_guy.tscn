@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgwowobc7aana"]
+[gd_scene load_steps=5 format=3 uid="uid://rss6l1jqgbfp"]
 
 [ext_resource type="Script" uid="uid://bkfascnyveqg4" path="res://enemies/wall_guy.gd" id="1_wxn2a"]
 [ext_resource type="PackedScene" uid="uid://hih0x0ccj5wb" path="res://assets/models/charger.glb" id="2_thjt0"]

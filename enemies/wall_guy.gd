@@ -32,13 +32,20 @@ func _physics_process(delta: float) -> void:
 
 func _on_chargeup_timeout() -> void:
 	charging = true
+	$charger/AnimationPlayer.play("Charge")
 	$Charge.start()
-	direction = Vector2((target_pos-global_position).normalized().x,(target_pos-global_position).normalized().z)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	target_pos = body.global_position
-	$Chargeup.start()
+	if not charging:
+		target_pos = body.global_position
+		direction = Vector2((target_pos-global_position).normalized().x,(target_pos-global_position).normalized().z)
+		rotation.y = PI/2-Vector2(velocity.x,velocity.z).angle()
+		$charger/AnimationPlayer.play("Telegraph")
+		$Chargeup.start()
 
 
 func _on_charge_timeout() -> void:
+	$charger/AnimationPlayer.play("Idle")
 	charging = false
+	if $Area3D.get_overlapping_bodies():
+		_on_area_3d_body_entered($Area3D.get_overlapping_bodies()[0])

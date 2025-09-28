@@ -9,13 +9,12 @@ var target_rotation = 0
 
 func _ready() -> void:
 	actor_setup.call_deferred()
-	shoot_bullet(Vector3.ZERO)
 	max_health = 5
 	health = max_health
 	original_pos = global_position
 	
 func actor_setup():
-	pass
+	shoot_bullet(Vector3.ZERO)
 
 func set_movement_target(movement_target: Vector3):
 	pass
