@@ -26,6 +26,8 @@ func take_damage(dmg_amount: int) -> void:
 func die() -> void:
 	PlayerGlobalManager.give_player_xp(1)
 	health = max_health
+	global_position.y -= 100
+	await get_tree().create_timer(5).timeout
 	global_position = original_pos
 
 func _ready() -> void:

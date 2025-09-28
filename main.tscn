@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" path="res://enemies/wall_guy.tscn" id="4_1bvp3"]
-[ext_resource type="Script" path="res://control.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://d3jcwouspyhjs" path="res://control.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://rtx58aai472o" path="res://assets/objects/sacrifice_door_model.tscn" id="6_7mycd"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
@@ -77,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304183, 0)
 shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="Goomba" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.93077, 1.6414824, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.491486, 1.6414824, 31.62574)
 
 [node name="Turret" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.87181, 2.9214535, 10.457431)
@@ -98,10 +98,6 @@ offset_right = 74.0
 offset_bottom = 57.0
 text = "100"
 
-[node name="Sacrifice Door Model" parent="." instance=ExtResource("6_7mycd")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.9566598, 0.5, -36.06614)
-text = "Health: 100"
-
 [node name="Level" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 35.0
@@ -110,16 +106,19 @@ offset_right = 75.0
 offset_bottom = 84.0
 text = "Level: 1"
 
+[node name="Sacrifice Door Model" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.9566598, 0.5, -36.06614)
+
 [node name="Goombers" type="Node3D" parent="."]
 
 [node name="Goomba" parent="Goombers" instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1921625, 1.6414824, -12.71748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.413227, 1.6414843, -32.18074)
 
 [node name="Goomba3" parent="Goombers" instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.974654, 1.6414824, -12.669376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.630733, 1.6414843, -32.132637)
 
 [node name="Goomba4" parent="Goombers" instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.622151, 1.6414824, -12.281942)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.98324, 1.6414843, -31.745201)
 
 [node name="Goomba2" parent="Goombers" instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.539185, 1.2418842, -14.468248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.066204, 1.2418861, -33.931507)

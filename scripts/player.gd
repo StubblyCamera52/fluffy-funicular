@@ -80,10 +80,7 @@ func _physics_process(delta: float) -> void:
 			if player_velocity.length()>0:
 					_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
 			if is_on_floor():
-				if _playerAnimator.current_animation==("Slash"):
-					_playerAnimator.playback_default_blend_time = 0.1
-				else:
-					_playerAnimator.playback_default_blend_time = 0
+				_playerAnimator.playback_default_blend_time = 0.1
 				_playerAnimator.set_blend_time("Walk","Idle",0.25)
 				if player_velocity.length() > 3:
 					_playerAnimator.play("Walk",-1,player_velocity.length()/10)
