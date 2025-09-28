@@ -9,6 +9,7 @@ var target_rotation = 0
 
 func _ready() -> void:
 	actor_setup.call_deferred()
+	health = 5
 	
 func actor_setup():
 	pass

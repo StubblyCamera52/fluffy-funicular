@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=10 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://rss6l1jqgbfp" path="res://enemies/wall_guy.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://d3jcwouspyhjs" path="res://control.gd" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -64,11 +65,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.957869, 1.5297585, -18.201
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("5_lquwl")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Health" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 34.0
 offset_right = 74.0
 offset_bottom = 57.0
-text = "200"
+text = "100"

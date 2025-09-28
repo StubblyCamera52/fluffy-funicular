@@ -1,5 +1,7 @@
 extends Node
 
+signal took_damage()
+
 var player_health := 100
 var player_xp := 0
 var player_level := 1
@@ -14,6 +16,10 @@ func set_player_var(player: CharacterBody3D):
 
 func damage_player(dmgAmount: int):
 	player_health -= dmgAmount
+	took_damage.emit()
+	if player_health <= 0:
+		get_tree().reload_current_scene()
+		player_health = 100
 
 func give_player_xp(xpAmount: int):
 	player_xp += xpAmount

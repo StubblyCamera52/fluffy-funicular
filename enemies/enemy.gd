@@ -20,6 +20,7 @@ func take_damage(dmg_amount: int) -> void:
 		die()
 
 func die() -> void:
+	PlayerGlobalManager.give_player_xp(1)
 	queue_free()
 
 func _ready() -> void:
@@ -34,7 +35,7 @@ func set_movement_target(movement_target: Vector3):
 	nav_agent.set_target_position(movement_target)
 
 func _process(delta: float) -> void:
-	move_toward(dmg_debounce, 0.0, delta)
+	dmg_debounce = move_toward(dmg_debounce, 0.0, delta)
 
 func _physics_process(delta: float) -> void:
 	if nav_agent.is_navigation_finished():

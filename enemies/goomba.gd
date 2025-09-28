@@ -2,6 +2,8 @@ extends Enemy
 
 @onready var _animator: AnimationPlayer = $GoombaModel/AnimationPlayer
 
+var is_being_knocked_back := false
+var knock_back := false
 var target_player = null
 
 func _ready() -> void:
@@ -12,9 +14,18 @@ func _ready() -> void:
 func actor_setup():
 	await get_tree().physics_frame
 
-	
+func take_damage(dmg_amount: int) -> void:
+	if dmg_debounce > 0:
+		return
+	dmg_debounce = 0.355
+	health -= dmg_amount
+	knock_back = true
+	if health <= 0:
+		die()
+
 func _physics_process(delta: float) -> void:
-	print(velocity)
+	#print(dmg_debounce)
+	#print(velocity)
 	_animator.set_blend_time("Walk","Idle",0.25)
 	_animator.set_blend_time("Walk","Idle",0.25)
 	if velocity.length()>5:
@@ -24,21 +35,34 @@ func _physics_process(delta: float) -> void:
 		_animator.play("Idle")
 	if target_player != null:
 		set_movement_target(target_player.global_position)
-	velocity = Vector3.ZERO
 	
-	if nav_agent.is_navigation_finished():
-		if !is_on_floor():
-			velocity.y -= 1
-		else:
-			velocity.y = 0
-		move_and_slide()
-		return
-	var next_location := nav_agent.get_next_path_position()
-	velocity = global_position.direction_to(next_location)*movement_speed
+	if !is_being_knocked_back:
+		velocity = Vector3.ZERO
+		
+		if nav_agent.is_navigation_finished():
+			if !is_on_floor():
+				velocity.y -= 1
+			else:
+				velocity.y = 0
+			move_and_slide()
+			return
+		var next_location := nav_agent.get_next_path_position()
+		velocity = global_position.direction_to(next_location)*movement_speed
+	
 	if !is_on_floor():
-		velocity.y -= 1
+		velocity.y += get_gravity().y*delta
 	else:
+		is_being_knocked_back = false
 		velocity.y = 0
+	
+	if knock_back:
+		print("knock")
+		knock_back = false
+		is_being_knocked_back = true
+		if target_player:
+			velocity = Vector3(global_position-target_player.global_position).normalized()*7+Vector3.UP*3
+			print(velocity)
+	
 	move_and_slide()
 
 func _on_targeting_area_body_entered(body: Node3D) -> void:
