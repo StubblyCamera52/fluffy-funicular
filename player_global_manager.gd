@@ -1,6 +1,7 @@
 extends Node
 
 signal took_damage()
+signal level_changed()
 
 var player_health := 100
 var player_xp := 0
@@ -9,7 +10,7 @@ var player_powerups: Dictionary[String,GenericPowerUp] = {}
 var player_model: CharacterBody3D
 
 var player_num_jumps: int = 1
-var player_can_wall_jump: bool = true
+var player_can_wall_jump: bool = false
 
 func set_player_var(player: CharacterBody3D):
 	player_model = player
@@ -18,11 +19,24 @@ func damage_player(dmgAmount: int):
 	player_health -= dmgAmount
 	took_damage.emit()
 	if player_health <= 0:
+		for key in player_powerups:
+			player_powerups[key].deactivate()
+			player_powerups.erase(key)
 		get_tree().reload_current_scene()
 		player_health = 100
+		player_xp = 0
 
 func give_player_xp(xpAmount: int):
 	player_xp += xpAmount
+	print(player_xp)
+	player_level = floor(player_xp/5)+1
+	level_changed.emit()
+	if player_level > 1:
+		apply_powerup(DoubleJump.new())
+	if player_level > 2:
+		apply_powerup(WallJump.new())
+	if player_level > 3:
+		apply_powerup(TripleJump.new())
 
 func apply_powerup(powerup: GenericPowerUp):
 	if player_powerups.get(powerup.name) != null:

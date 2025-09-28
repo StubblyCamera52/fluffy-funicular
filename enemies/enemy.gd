@@ -5,9 +5,13 @@ extends CharacterBody3D
 
 # enemy config
 @export var movement_speed: float = 5.0
-@export var health: int = 100
+@export var max_health: int = 100
 @export var damage: int = 0
 @export var identifier := "enemy"
+
+var health: int = max_health
+
+var original_pos: Vector3 = Vector3(0, 1, 0)
 
 var dmg_debounce := 0.0
 
@@ -21,7 +25,8 @@ func take_damage(dmg_amount: int) -> void:
 
 func die() -> void:
 	PlayerGlobalManager.give_player_xp(1)
-	queue_free()
+	health = max_health
+	global_position = original_pos
 
 func _ready() -> void:
 	actor_setup.call_deferred()

@@ -100,3 +100,26 @@ text = "100"
 
 [node name="Sacrifice Door Model" parent="." instance=ExtResource("6_7mycd")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.9566598, 0.5, -36.06614)
+text = "Health: 100"
+
+[node name="Level" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 61.0
+offset_right = 75.0
+offset_bottom = 84.0
+text = "Level: 1"
+
+[node name="Goombers" type="Node3D" parent="."]
+
+[node name="Goomba" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1921625, 1.6414824, -12.71748)
+
+[node name="Goomba3" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.974654, 1.6414824, -12.669376)
+
+[node name="Goomba4" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.622151, 1.6414824, -12.281942)
+
+[node name="Goomba2" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.539185, 1.2418842, -14.468248)

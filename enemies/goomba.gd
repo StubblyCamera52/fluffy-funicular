@@ -7,9 +7,12 @@ var knock_back := false
 var target_player = null
 
 func _ready() -> void:
+	original_pos = global_position
 	identifier = "enemy"
 	damage = 5
 	actor_setup.call_deferred()
+	max_health = 15
+	health = max_health
 	
 func actor_setup():
 	await get_tree().physics_frame

@@ -8,6 +8,9 @@ func _ready() -> void:
 	actor_setup.call_deferred()
 	damage = 20
 	movement_speed = 20
+	max_health = 100
+	health = max_health
+	original_pos = global_position
 
 func set_movement_target(movement_target: Vector3):
 	pass

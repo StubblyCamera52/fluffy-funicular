@@ -9,7 +9,9 @@ var target_rotation = 0
 
 func _ready() -> void:
 	actor_setup.call_deferred()
-	health = 5
+	max_health = 5
+	health = max_health
+	original_pos = global_position
 	
 func actor_setup():
 	pass
