@@ -12,7 +12,7 @@ extends CharacterBody3D
 # Player Movement Config
 @export var MAX_SPEED := 20.0
 @export var ACCELERATION := 2.0
-@export var DECELERATION := 0.9
+@export var DECELERATION := 0.90
 @export var GRAVITY_FORCE := 20.0
 @export var JUMP_VELOCITY := 4.5
 @export var DASH_MULTIPLIER := 5
@@ -164,6 +164,8 @@ func _physics_process(delta: float) -> void:
 			player_velocity.y = 0
 	
 	velocity = player_velocity
+	if Vector2(velocity.x,velocity.z).length() > MAX_SPEED:
+		velocity = Vector3(Vector2(velocity.x,velocity.z).normalized().x*MAX_SPEED, velocity.y, Vector2(velocity.x,velocity.z).normalized().y*MAX_SPEED)
 	move_and_slide()
 	if is_on_floor():
 		if current_player_state == PLAYER_STATES.KNOCKBACK:

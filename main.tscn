@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
-[ext_resource type="Material" uid="uid://y2d1g358pg88" path="res://assets/materials/GrassMaterial.tres" id="2_5vw27"]
+[ext_resource type="Material" path="res://assets/materials/GrassMaterial.tres" id="2_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bomtixrvupch5" path="res://assets/textures/sky.png" id="2_7mycd"]
-[ext_resource type="Material" uid="uid://bouul3mlftuwo" path="res://assets/materials/DirtMaterial.tres" id="2_272bh"]
-[ext_resource type="Material" uid="uid://b8jmr6udttgx1" path="res://assets/materials/BrickMaterial.tres" id="4_kek77"]
+[ext_resource type="Material" path="res://assets/materials/DirtMaterial.tres" id="2_272bh"]
+[ext_resource type="Material" path="res://assets/materials/BrickMaterial.tres" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://rtx58aai472o" path="res://assets/objects/sacrifice_door_model.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dcdje2f04xlmw" path="res://assets/objects/starcore.tscn" id="6_kek77"]
 [ext_resource type="PackedScene" uid="uid://c6b7bnj8amhtc" path="res://ui.tscn" id="9_kek77"]
