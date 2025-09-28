@@ -12,7 +12,7 @@ signal sacrifice(doorpos: Vector3)
 
 var player_num_jumps: int = 1
 var player_can_wall_jump: bool = false
-var player_can_dash: bool = true
+var player_can_dash: bool = false
 
 func set_player_var(player: CharacterBody3D):
 	took_damage.emit()
@@ -35,6 +35,9 @@ func give_player_xp(xpAmount: int):
 	print(player_xp)
 	player_level = floor(player_xp/5)+1
 	xp_changed.emit()
+	for key in player_powerups:
+			player_powerups[key].deactivate()
+			player_powerups.erase(key)
 	if player_level > 1:
 		apply_powerup(DoubleJump.new())
 	if player_level > 2:
