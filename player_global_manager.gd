@@ -8,6 +8,7 @@ var player_xp := 0
 var player_level := 1
 var player_powerups: Dictionary[String,GenericPowerUp] = {}
 var player_model: CharacterBody3D
+signal sacrifice(doorpos: Vector3)
 
 var player_num_jumps: int = 1
 var player_can_wall_jump: bool = false
@@ -51,6 +52,9 @@ func remove_powerup(powerup: GenericPowerUp):
 	if player_powerups.get(powerup.name) != null:
 		player_powerups[powerup.name].deactivate()
 		player_powerups.erase(powerup.name)
+
+func sacrifice_animation(doorpos: Vector3):
+	sacrifice.emit(doorpos)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

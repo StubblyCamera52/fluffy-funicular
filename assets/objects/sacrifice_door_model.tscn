@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://rtx58aai472o"]
+[gd_scene load_steps=5 format=3 uid="uid://rtx58aai472o"]
 
 [ext_resource type="PackedScene" uid="uid://dv88aci354jyy" path="res://assets/models/sacrifice door.glb" id="1_6fuqc"]
 [ext_resource type="Script" uid="uid://ch7ye8m4brqs" path="res://assets/objects/sacrifice_door_model.gd" id="2_x6ase"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nk17t"]
-size = Vector3(1.9311295, 2.3613281, 1.2035217)
+size = Vector3(1.9890122, 2.4394531, 0.2052803)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6ase"]
+size = Vector3(0.90893555, 1.605957, 1.2078857)
 
 [node name="Sacrifice Door Model" instance=ExtResource("1_6fuqc")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -17,7 +20,7 @@ bones/1/rotation = Quaternion(-3.5587414e-07, -7.025976e-08, -0.7124782, 0.70169
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012935638, 1.2539063, -0.00024414063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0004837513, 1.2148438, -0.00046730042)
 shape = SubResource("BoxShape3D_nk17t")
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
@@ -25,7 +28,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021099854, 1.143849, 0.75457406)
-shape = SubResource("BoxShape3D_nk17t")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022094727, 0.8022461, 0.5770874)
+shape = SubResource("BoxShape3D_x6ase")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

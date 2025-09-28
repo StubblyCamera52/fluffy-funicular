@@ -19,6 +19,7 @@ extends CharacterBody3D
 #player vars
 var mouse_locked := true
 var attack_time = 0
+var sacrifice_timer = 0
 
 # player state vars
 enum PLAYER_STATES {
@@ -26,7 +27,8 @@ enum PLAYER_STATES {
 	MOVEMENT_DISABLE,
 	IN_MENU,
 	ATTACKING,
-	KNOCKBACK
+	KNOCKBACK,
+	SACRIFICE
 }
 
 var current_player_state: PLAYER_STATES = PLAYER_STATES.BASIC
@@ -42,7 +44,14 @@ func _ready() -> void:
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	PlayerGlobalManager.set_player_var(self)
-	
+	PlayerGlobalManager.sacrifice.connect(playSacrificeAnim)
+
+func playSacrificeAnim(doorpos: Vector3):
+	current_player_state=PLAYER_STATES.SACRIFICE
+	_playerModel.rotation.y = PI-global_position.angle_to(doorpos)
+	_playerAnimator.play("Sacrifice",0.1,1)
+	sacrifice_timer=5
+
 func _input(event: InputEvent) -> void:
 	if OS.has_feature("web"):
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -78,17 +87,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				player_velocity = (60*Vector3(get_wall_normal().x,0,get_wall_normal().z))+Vector3(0,JUMP_VELOCITY,0)
 	if event.is_action_pressed("Attack") and attack_time==0:
 		attack_time=0.35
+		current_player_state=PLAYER_STATES.ATTACKING
 		_playerAnimator.playback_default_blend_time = 0.05
 		_playerAnimator.play("Slash")
 
 func _physics_process(delta: float) -> void:
-	if attack_time>0:
-		current_player_state=PLAYER_STATES.ATTACKING
-		attack_time=move_toward(attack_time,0,delta)
-	else:
-		current_player_state=PLAYER_STATES.BASIC
-	
-	
 	# State Machine
 	match current_player_state:
 		PLAYER_STATES.BASIC:
@@ -119,9 +122,16 @@ func _physics_process(delta: float) -> void:
 			if attack_time < 0.25 and attack_time>0.05:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
 					body.take_damage(10)
+			attack_time=move_toward(attack_time,0,delta)
+			if attack_time<=0:
+				current_player_state=PLAYER_STATES.BASIC
 			_playerAnimator.playback_default_blend_time = 0.25
 		PLAYER_STATES.KNOCKBACK:
 			pass
+		PLAYER_STATES.SACRIFICE:
+			sacrifice_timer-=delta
+			if sacrifice_timer <= 0:
+				current_player_state = PLAYER_STATES.BASIC
 
 
 
