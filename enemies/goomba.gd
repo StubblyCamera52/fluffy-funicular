@@ -25,19 +25,21 @@ func _physics_process(delta: float) -> void:
 	if target_player != null:
 		set_movement_target(target_player.global_position)
 	velocity = Vector3.ZERO
+	
 	if nav_agent.is_navigation_finished():
+		if !is_on_floor():
+			velocity.y -= 1
+		else:
+			velocity.y = 0
+		move_and_slide()
 		return
 	var next_location := nav_agent.get_next_path_position()
 	velocity = global_position.direction_to(next_location)*movement_speed
-	
 	if !is_on_floor():
 		velocity.y -= 1
 	else:
 		velocity.y = 0
-	
 	move_and_slide()
-
-
 
 func _on_targeting_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
