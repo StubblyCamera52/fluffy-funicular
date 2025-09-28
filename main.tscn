@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=12 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
+[ext_resource type="Material" uid="uid://y2d1g358pg88" path="res://assets/materials/GrassMaterial.tres" id="2_5vw27"]
+[ext_resource type="Material" uid="uid://bouul3mlftuwo" path="res://assets/materials/DirtMaterial.tres" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" path="res://enemies/wall_guy.tscn" id="4_1bvp3"]
+[ext_resource type="Material" uid="uid://b8jmr6udttgx1" path="res://assets/materials/BrickMaterial.tres" id="4_kek77"]
 [ext_resource type="Script" uid="uid://d3jcwouspyhjs" path="res://control.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://rtx58aai472o" path="res://assets/objects/sacrifice_door_model.tscn" id="6_7mycd"]
 
@@ -34,30 +37,37 @@ use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 size = Vector3(100, 1, 100)
+material = ExtResource("2_5vw27")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.343927, 3.308538, 0)
 size = Vector3(1, 6, 20)
+material = ExtResource("2_272bh")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(47.161976, 0, 0, 0, 1.4273311, 0, 0, 0, 0.06819957, -31.586008, 4.722379, -36.278236)
 size = Vector3(1, 6, 20)
+material = ExtResource("4_kek77")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(56.248295, 0, 0, 0, 1.4273311, 0, 0, 0, 0.06568919, 27.94739, 4.722379, -36.278236)
 size = Vector3(1, 6, 20)
+material = ExtResource("4_kek77")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.974426, 13.838934, -2.140756)
 size = Vector3(11.1073, 27.060791, 2.4589844)
+material = ExtResource("2_272bh")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.974426, 7.1825614, 14.920654)
 size = Vector3(11.1073, 13.748047, 14.759277)
+material = ExtResource("2_272bh")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.974426, 13.838934, 27.078257)
 size = Vector3(11.1073, 27.060791, 2.4589844)
+material = ExtResource("2_272bh")
 
 [node name="Goomba" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.491486, 1.6414824, 31.62574)

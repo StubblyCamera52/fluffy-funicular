@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b8jmr6udttgx1"]
+
+[ext_resource type="Texture2D" uid="uid://vdlyf2o351qi" path="res://assets/textures/DungeonBrick2.png" id="1_nb6gg"]
+
+[resource]
+shading_mode = 2
+albedo_texture = ExtResource("1_nb6gg")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
