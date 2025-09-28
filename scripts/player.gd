@@ -26,6 +26,7 @@ enum PLAYER_STATES {
 	MOVEMENT_DISABLE,
 	IN_MENU,
 	ATTACKING,
+	KNOCKBACK
 }
 
 var current_player_state: PLAYER_STATES = PLAYER_STATES.BASIC
@@ -102,6 +103,8 @@ func _physics_process(delta: float) -> void:
 			for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
 				body.take_damage(10)
 			_playerAnimator.playback_default_blend_time = 0.25
+		PLAYER_STATES.KNOCKBACK:
+			pass
 
 
 
