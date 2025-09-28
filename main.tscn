@@ -15,7 +15,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
-size = Vector3(1, 2, 20)
+size = Vector3(1, 6, 20)
 
 [node name="main" type="Node3D"]
 
@@ -45,11 +45,11 @@ shape = SubResource("BoxShape3D_7dm0k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.343927, 0, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.308538, 0)
-size = Vector3(1, 2, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.308538, 0)
+size = Vector3(1, 6, 20)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigatableLevel/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.304183, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304183, 0)
 shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="Goomba" parent="." instance=ExtResource("2_0xm2m")]

@@ -7,7 +7,7 @@ var player_powerups: Dictionary[String,GenericPowerUp] = {}
 var player_model: CharacterBody3D
 
 var player_num_jumps: int = 1
-var player_can_wall_jump: bool = false
+var player_can_wall_jump: bool = true
 
 func set_player_var(player: CharacterBody3D):
 	player_model = player

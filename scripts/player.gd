@@ -57,7 +57,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			times_jumped += 1
 			player_velocity.y=JUMP_VELOCITY
 		if is_on_wall_only() and PlayerGlobalManager.player_can_wall_jump:
-			pass
+			if Vector2(get_wall_normal().x,get_wall_normal().z).length() > 0.9:
+				player_velocity = (60*Vector3(get_wall_normal().x,0,get_wall_normal().z))+Vector3(0,JUMP_VELOCITY,0)
 	if event.is_action_pressed("Attack") and attack_time==0:
 		attack_time=0.35
 		_playerAnimator.playback_default_blend_time = 0.05
