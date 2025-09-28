@@ -133,7 +133,7 @@ func _physics_process(delta: float) -> void:
 				player_velocity.x += player_direction.x * ACCELERATION
 				player_velocity.z += player_direction.z * ACCELERATION
 		PLAYER_STATES.ATTACKING:
-			if attack_time < 0.25 and attack_time>0.05:
+			if attack_time < 0.25 and attack_time>0.025:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
 					body.take_damage(10)
 			if attack_time<=0:
