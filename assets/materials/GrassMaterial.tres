@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bosylk0om3vn6" path="res://assets/textures/grass2.png" id="1_pasno"]
 
 [resource]
-shading_mode = 2
 albedo_texture = ExtResource("1_pasno")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true

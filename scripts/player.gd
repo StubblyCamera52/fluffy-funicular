@@ -55,7 +55,7 @@ func knockback(pos: Vector3):
 
 func playSacrificeAnim(doorpos: Vector3):
 	current_player_state=PLAYER_STATES.SACRIFICE
-	_playerModel.rotation.y = PI-global_position.angle_to(doorpos)
+	_playerModel.rotation.y = PI/2-Vector2(global_position.direction_to(doorpos).x,global_position.direction_to(doorpos).z).angle()
 	_playerAnimator.play("Sacrifice",0.1,1)
 	sacrifice_timer=5
 
