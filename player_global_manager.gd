@@ -2,10 +2,12 @@ extends Node
 
 signal took_damage(pos: Vector3)
 signal xp_changed()
+signal player_obtained_collectable()
 
 var player_health := 100
 var player_xp := 0
 var player_level := 1
+var player_collectables := 0
 var player_powerups: Dictionary[String,GenericPowerUp] = {}
 var player_model: CharacterBody3D
 signal sacrifice(doorpos: Vector3)
@@ -15,8 +17,13 @@ var player_can_wall_jump: bool = false
 var player_can_dash: bool = false
 
 func set_player_var(player: CharacterBody3D):
+	player_collectables = 0
+	player_health = 100
+	player_level = 1
+	player_xp = 0
 	took_damage.emit()
 	xp_changed.emit()
+	player_obtained_collectable.emit()
 	player_model = player
 
 func damage_player(dmgAmount: int, pos: Vector3):
@@ -27,8 +34,6 @@ func damage_player(dmgAmount: int, pos: Vector3):
 			player_powerups[key].deactivate()
 			player_powerups.erase(key)
 		get_tree().reload_current_scene()
-		player_health = 100
-		player_xp = 0
 
 func give_player_xp(xpAmount: int):
 	player_xp += xpAmount

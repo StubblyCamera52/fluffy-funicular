@@ -51,7 +51,7 @@ func _ready() -> void:
 
 func knockback(pos: Vector3):
 	current_player_state = PLAYER_STATES.KNOCKBACK
-	player_velocity = Vector3(global_position-pos).normalized()*Vector3(1,0,1)*50+Vector3.UP*10
+	player_velocity = Vector3(global_position-pos).normalized()*Vector3(1,0,1)*60+Vector3.UP*10
 
 func playSacrificeAnim(doorpos: Vector3):
 	current_player_state=PLAYER_STATES.SACRIFICE
