@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6b7bnj8amhtc"]
+
+[ext_resource type="Script" uid="uid://doijypkx2iodj" path="res://scripts/ui.gd" id="1_fyqef"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("1_fyqef")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="health" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Health: 100"
+
+[node name="xpToNextLevel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "XP to next level: 5"
+
+[node name="level" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level: 1"
