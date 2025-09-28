@@ -31,9 +31,17 @@ func _physics_process(delta: float) -> void:
 	#print(velocity)
 	_animator.set_blend_time("Walk","Idle",0.25)
 	_animator.set_blend_time("Walk","Idle",0.25)
-	if velocity.length()>5:
-		_animator.play("Walk",-1,velocity.length()/4.5)
+	_animator.set_blend_time("Walk","Hurt",0.25)
+	_animator.set_blend_time("Hurt","Walk",0.25)
+	_animator.set_blend_time("Hurt","Idle",0.25)
+	if velocity.length()>1:
+		if is_being_knocked_back:
+			_animator.play("Hurt",-1,2)
+		else:
+			_animator.play("Walk",-1,velocity.length()/4.5)
 		rotation.y = PI/2-Vector2(velocity.x,velocity.z).angle()
+		if is_being_knocked_back:
+			rotation.y+=PI
 	else:
 		_animator.play("Idle")
 	if target_player != null:

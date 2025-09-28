@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://rss6l1jqgbfp" path="res://enemies/wall_guy.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" path="res://enemies/wall_guy.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://d3jcwouspyhjs" path="res://control.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://rtx58aai472o" path="res://assets/objects/sacrifice_door_model.tscn" id="6_7mycd"]
 

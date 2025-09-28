@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cu5ml885j0itv"]
+
+[ext_resource type="Texture2D" uid="uid://dyuokldvu3knb" path="res://assets/textures/turretlaser_turretlaser.png" id="1_ipp37"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_ipp37")
+texture_filter = 0
+disable_receive_shadows = true
