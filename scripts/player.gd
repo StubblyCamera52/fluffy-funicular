@@ -32,6 +32,7 @@ var current_player_state: PLAYER_STATES = PLAYER_STATES.BASIC
 var player_velocity := Vector3.ZERO
 var player_direction := Vector3.ZERO
 var player_input_direction := Vector2.ZERO
+var times_jumped: int = 0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -52,8 +53,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -cam_tilt_limit, cam_tilt_limit)
 		_camera_pivot.rotation.y -= event.relative.x * mouse_sens
 	if event.is_action_pressed("Jump"):
-		if is_on_floor():
+		if is_on_floor() or times_jumped < PlayerGlobalManager.player_num_jumps:
+			times_jumped += 1
 			player_velocity.y=JUMP_VELOCITY
+		if is_on_wall_only() and PlayerGlobalManager.player_can_wall_jump:
+			pass
 	if event.is_action_pressed("Attack") and attack_time==0:
 		attack_time=0.35
 		_playerAnimator.playback_default_blend_time = 0.05
@@ -112,6 +116,7 @@ func _physics_process(delta: float) -> void:
 		player_velocity.y -=GRAVITY_FORCE*delta
 	else:
 		if player_velocity.y<0:
+			times_jumped = 0
 			player_velocity.y = 0
 	
 	velocity = player_velocity

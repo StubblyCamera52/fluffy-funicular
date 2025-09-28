@@ -6,6 +6,9 @@ var player_level := 1
 var player_powerups: Dictionary[String,GenericPowerUp] = {}
 var player_model: CharacterBody3D
 
+var player_num_jumps: int = 1
+var player_can_wall_jump: bool = false
+
 func set_player_var(player: CharacterBody3D):
 	player_model = player
 
@@ -29,7 +32,7 @@ func remove_powerup(powerup: GenericPowerUp):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#apply_powerup(GenericPowerUp.new())
+	#apply_powerup(TripleJump.new())
 	pass
 
 

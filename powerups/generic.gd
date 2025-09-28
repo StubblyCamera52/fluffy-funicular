@@ -1,13 +1,12 @@
-extends Resource
-class_name GenericPowerUp
+class_name GenericPowerUp extends Resource
 
 @export var name: String = "generic"
 
 func activate() -> void:
-	print("activated generic powerup")
+	pass
 
 func deactivate() -> void:
-	print("deactivate generic powerup")
+	pass
 
 func powerup_periodic() -> void:
-	print("powerup periodic")
+	pass
