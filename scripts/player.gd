@@ -36,17 +36,33 @@ var player_input_direction := Vector2.ZERO
 var times_jumped: int = 0
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if OS.has_feature("web"):
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		pass
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	PlayerGlobalManager.set_player_var(self)
+	
+func _input(event: InputEvent) -> void:
+	if OS.has_feature("web"):
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				get_tree().set_input_as_handled()
+		if event.is_action_pressed("ui_cancel"):
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				get_tree().set_input_as_handled()
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("unlock_mouse"):
-		mouse_locked = !mouse_locked
-		match mouse_locked:
-			true:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			false:
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if !OS.has_feature("web"):
+			mouse_locked = !mouse_locked
+			match mouse_locked:
+				true:
+					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				false:
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mouse_locked:
