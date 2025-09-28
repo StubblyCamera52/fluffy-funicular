@@ -7,8 +7,10 @@ func _init() -> void:
 	PlayerGlobalManager.xp_changed.connect(update_ability_ui)
 	PlayerGlobalManager.player_obtained_collectable.connect(update_collectable_ui)
 
-func update_collectable_ui():
-	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/2")
+func update_collectable_ui(subtitle: String):
+	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/5")
+	$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b][color=yellow]YOU GOT A STARCORE![/color][/b][/shake]\n'''+'"'+subtitle+'"'
+	$"Ability Unlock/DisplayTimer".start()
 
 func update_player_health_ui(pos: Vector3) -> void:
 	$MarginContainer/VBoxContainer/health.text = str("Health: "+str(PlayerGlobalManager.player_health)+str("/100"))

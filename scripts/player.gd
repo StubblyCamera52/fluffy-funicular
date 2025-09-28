@@ -60,7 +60,7 @@ func playSacrificeAnim(doorpos: Vector3):
 	current_player_state=PLAYER_STATES.SACRIFICE
 	_playerModel.rotation.y = PI/2-Vector2(global_position.direction_to(doorpos).x,global_position.direction_to(doorpos).z).angle()
 	_playerAnimator.play("Sacrifice",0.1,1)
-	sacrifice_timer=5
+	sacrifice_timer=5.5
 
 func _input(event: InputEvent) -> void:
 	if OS.has_feature("web"):
@@ -138,7 +138,7 @@ func _physics_process(delta: float) -> void:
 		PLAYER_STATES.ATTACKING:
 			if attack_time < 0.25 and attack_time>0.05:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
-					body.take_damage(10)
+					body.take_damage(PlayerGlobalManager.player_level*3+4)
 			if attack_time<=0:
 				current_player_state=PLAYER_STATES.BASIC
 			_playerAnimator.playback_default_blend_time = 0.25

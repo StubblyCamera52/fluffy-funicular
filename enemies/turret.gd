@@ -10,6 +10,8 @@ var target_rotation = 0
 func _ready() -> void:
 	actor_setup.call_deferred()
 	max_health = 5
+	shoot_bullet(Vector3.ZERO)
+	max_health = 10
 	health = max_health
 	original_pos = global_position
 	
