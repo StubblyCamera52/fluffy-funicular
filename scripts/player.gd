@@ -15,6 +15,7 @@ extends CharacterBody3D
 @export var DECELERATION := 0.9
 @export var GRAVITY_FORCE := 20.0
 @export var JUMP_VELOCITY := 4.5
+@export var DASH_MULTIPLIER := 5
 
 #player vars
 var mouse_locked := true
@@ -36,6 +37,7 @@ var player_velocity := Vector3.ZERO
 var player_direction := Vector3.ZERO
 var player_input_direction := Vector2.ZERO
 var times_jumped: int = 0
+var dash_debounce := false
 
 func _ready() -> void:
 	if OS.has_feature("web"):
@@ -90,7 +92,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_player_state=PLAYER_STATES.ATTACKING
 		_playerAnimator.playback_default_blend_time = 0.05
 		_playerAnimator.play("Slash")
-
+	if event.is_action_pressed("Special") and not dash_debounce and PlayerGlobalManager.player_can_dash and not is_on_floor() and not is_on_wall():
+		dash_debounce = true
+		player_velocity.x *= DASH_MULTIPLIER
+		player_velocity.z *= DASH_MULTIPLIER
+		if player_velocity.y < 0:
+			player_velocity.y = 3
+		
 func _physics_process(delta: float) -> void:
 	# State Machine
 	match current_player_state:
@@ -143,6 +151,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		player_velocity.y -=GRAVITY_FORCE*delta
 	else:
+		dash_debounce = false
 		if player_velocity.y<0:
 			times_jumped = 0
 			player_velocity.y = 0

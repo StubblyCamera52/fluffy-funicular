@@ -27,10 +27,10 @@ func update_ability_ui() -> void:
 				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Wall Jump[/color]\nJump off a wall to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			4:
-				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Triple Jump[/color]\nJump in the air to activate'''
+				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Air Dash[/color]\n Use [Special] in the air to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			5:
-				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Nothing[/color]\n In progess'''
+				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Triple Jump[/color]\nJump in the air to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			_:
 				pass

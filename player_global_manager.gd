@@ -12,6 +12,7 @@ signal sacrifice(doorpos: Vector3)
 
 var player_num_jumps: int = 1
 var player_can_wall_jump: bool = false
+var player_can_dash: bool = true
 
 func set_player_var(player: CharacterBody3D):
 	took_damage.emit()
@@ -39,6 +40,8 @@ func give_player_xp(xpAmount: int):
 	if player_level > 2:
 		apply_powerup(WallJump.new())
 	if player_level > 3:
+		apply_powerup(AirDash.new())
+	if player_level > 4:
 		apply_powerup(TripleJump.new())
 
 func apply_powerup(powerup: GenericPowerUp):
