@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckjqo1jh2wlna"
-path.s3tc="res://.godot/imported/goombatype_goombatype tex.png-b56a498a4f963c0fd00d2e76fdd709c7.s3tc.ctex"
+uid="uid://23cilxscmel8"
+path.s3tc="res://.godot/imported/sacrifice door_sacrifice door tex.png-832b7d9079a0a1ebc3ee86ef5b2e997a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "57819624fe076fd67009d0fcc5ea9368"
+"md5": "1d94eeb8561755c5cbaa9bd4d04899f2"
 }
 
 [deps]
 
-source_file="res://assets/models/goombatype_goombatype tex.png"
-dest_files=["res://.godot/imported/goombatype_goombatype tex.png-b56a498a4f963c0fd00d2e76fdd709c7.s3tc.ctex"]
+source_file="res://assets/models/sacrifice door_sacrifice door tex.png"
+dest_files=["res://.godot/imported/sacrifice door_sacrifice door tex.png-832b7d9079a0a1ebc3ee86ef5b2e997a.s3tc.ctex"]
 
 [params]
 
