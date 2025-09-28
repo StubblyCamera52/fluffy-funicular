@@ -140,7 +140,7 @@ func _physics_process(delta: float) -> void:
 				current_player_state=PLAYER_STATES.BASIC
 			_playerAnimator.playback_default_blend_time = 0.25
 		PLAYER_STATES.KNOCKBACK:
-			pass
+			_playerAnimator.play("Hurt")
 		PLAYER_STATES.SACRIFICE:
 			player_velocity.x = move_toward(player_velocity.x, 0,delta*15)
 			player_velocity.z = move_toward(player_velocity.z, 0,delta*15)
