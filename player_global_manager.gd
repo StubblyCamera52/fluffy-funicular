@@ -19,8 +19,9 @@ var player_can_dash: bool = false
 func set_player_var(player: CharacterBody3D):
 	player_collectables = 0
 	player_health = 100
-	player_level = 1
-	player_xp = 0
+	player_level = 5
+	player_xp = 20
+	give_player_xp(0)
 	took_damage.emit()
 	xp_changed.emit()
 	player_obtained_collectable.emit()

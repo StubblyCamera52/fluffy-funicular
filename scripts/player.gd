@@ -50,6 +50,8 @@ func _ready() -> void:
 	PlayerGlobalManager.took_damage.connect(knockback)
 
 func knockback(pos: Vector3):
+	if pos == Vector3.ZERO:
+		return
 	current_player_state = PLAYER_STATES.KNOCKBACK
 	player_velocity = Vector3(global_position-pos).normalized()*Vector3(1,0,1)*60+Vector3.UP*10
 
@@ -164,7 +166,7 @@ func _physics_process(delta: float) -> void:
 			player_velocity.y = 0
 	
 	velocity = player_velocity
-	if Vector2(velocity.x,velocity.z).length() > MAX_SPEED:
+	if Vector2(velocity.x,velocity.z).length() > MAX_SPEED and !dash_debounce:
 		velocity = Vector3(Vector2(velocity.x,velocity.z).normalized().x*MAX_SPEED, velocity.y, Vector2(velocity.x,velocity.z).normalized().y*MAX_SPEED)
 	move_and_slide()
 	if is_on_floor():
@@ -177,4 +179,6 @@ func _on_enemy_collision_area_body_entered(body: Node3D) -> void:
 		print(body.identifier)
 		if body.identifier == "bullet":
 			body.queue_free()
-		PlayerGlobalManager.damage_player(body.damage, body.global_position)
+			PlayerGlobalManager.damage_player(body.damage, Vector3.ZERO)
+		else:
+			PlayerGlobalManager.damage_player(body.damage, body.global_position)
