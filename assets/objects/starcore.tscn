@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=4 uid="uid://dcdje2f04xlmw"]
+
+[ext_resource type="PackedScene" uid="uid://jpxjff640r74" path="res://assets/models/Starcore.glb" id="1_701nf"]
+[ext_resource type="Script" uid="uid://cxomuvnvdjxwn" path="res://assets/objects/starcore.gd" id="2_hwevu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hwevu"]
+radius = 0.99393266
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwevu"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5y1xy"]
+_surfaces = [{
+"aabb": AABB(-0.08828047, -0.02207011, -0.08395967, 0.15970081, 0.04414022, 0.16791934),
+"format": 34359742465,
+"index_count": 120,
+"index_data": PackedByteArray("BAAKAAsABQAKAAQABQAMAAoACAAKAAwACwAKAAgADQAMAAUABAAOAAUABQAOAA0ABAAPAA4ACwAPAAQADwAHAA4ADgAHAA0ADwAAAAcACwAAAA8AAAAQAAcABwAQAA0AAAARABAACwARAAAAEQABABAAEAABAA0AEQAGAAEACwAGABEABgASAAEAAQASAA0ACwATAAYABgATABIAEwAJABIAEgAJAA0ACwADABMAEwADAAkACwAUAAMACwAIABQAAwAVAAkACQAVAA0AAwAUABUAFAAIAAIAFAACABUAFQACAA0ACAAMAAIAAgAMAA0A"),
+"lods": [0.036218945, PackedByteArray("BAAGAAAAAAAGAAcAAAAHAAUABAAAAAUABgABAAcABwABAAUABAADAAYABgADAAEABAAIAAMABQACAAQACAAEAAIAAQAJAAUAAwAJAAEACQACAAUAAwAIAAkACAACAAkA"), 0.052875184, PackedByteArray("BAADAAAAAAADAAEAAwAEAAIAAwACAAEABAAAAAUABQACAAQAAAABAAUAAQACAAUA"), 0.07519285, PackedByteArray("AAABAAIAAwACAAEAAwAAAAIAAAADAAEA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 22,
+"vertex_data": PackedByteArray("kHpfPGDMtDwM8yu94EQSvV7MtLyAitS8lHpfPGDMtLwQ8ys94EQSvV7MtDyMitQ8WMw0PWDMtDxeAvkxWMw0PWDMtLxgAvkx4EQSvV7MtDyAitS8kHpfPGDMtLwM8yu9lHpfPGDMtDwQ8ys94EQSvV7MtLyMitQ80kSSPV7MtDyWilQ9BiO6smDMtDxjtA8y0kSSPV7MtLyWilQ9BiO6smDMtLxjtA8y1ESSPWDMtLyMilS91ESSPWDMtDyMilS9sHrfvGDMtLwM86u9sHrfvGDMtDwM86u9ZMy0vWDMtLyQD0YxZMy0vWDMtDyQD0YxrHrfvGDMtDwM86s9rHrfvGDMtLwM86s9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ywlf8"]
+resource_name = "starparticle_Star_001"
+_surfaces = [{
+"aabb": AABB(-0.08828047, -0.02207011, -0.08395967, 0.15970081, 0.04414022, 0.16791934),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8="),
+"format": 34359742487,
+"index_count": 120,
+"index_data": PackedByteArray("BAAKAAsABQAKAAQABQAMAAoACAAKAAwACwAKAAgADQAMAAUABAAOAAUABQAOAA0ABAAPAA4ACwAPAAQADwAHAA4ADgAHAA0ADwAAAAcACwAAAA8AAAAQAAcABwAQAA0AAAARABAACwARAAAAEQABABAAEAABAA0AEQAGAAEACwAGABEABgASAAEAAQASAA0ACwATAAYABgATABIAEwAJABIAEgAJAA0ACwADABMAEwADAAkACwAUAAMACwAIABQAAwAVAAkACQAVAA0AAwAUABUAFAAIAAIAFAACABUAFQACAA0ACAAMAAIAAgAMAA0A"),
+"lods": [0.036218945, PackedByteArray("BAAGAAAAAAAGAAcAAAAHAAUABAAAAAUABgABAAcABwABAAUABAADAAYABgADAAEABAAIAAMABQACAAQACAAEAAIAAQAJAAUAAwAJAAEACQACAAUAAwAIAAkACAACAAkA"), 0.052875184, PackedByteArray("BAADAAAAAAADAAEAAwAEAAIAAwACAAEABAAAAAUABQACAAQAAAABAAUAAQACAAUA"), 0.07519285, PackedByteArray("AAABAAIAAwACAAEAAwAAAAIAAAADAAEA")],
+"material": SubResource("StandardMaterial3D_hwevu"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 22,
+"vertex_data": PackedByteArray("kHpfPGDMtDwM8yu94EQSvV7MtLyAitS8lHpfPGDMtLwQ8ys94EQSvV7MtDyMitQ8WMw0PWDMtDxeAvkxWMw0PWDMtLxgAvkx4EQSvV7MtDyAitS8kHpfPGDMtLwM8yu9lHpfPGDMtDwQ8ys94EQSvV7MtLyMitQ80kSSPV7MtDyWilQ9BiO6smDMtDxjtA8y0kSSPV7MtLyWilQ9BiO6smDMtLxjtA8y1ESSPWDMtLyMilS91ESSPWDMtDyMilS9sHrfvGDMtLwM86u9sHrfvGDMtDwM86u9ZMy0vWDMtLyQD0YxZMy0vWDMtDyQD0YxrHrfvGDMtDwM86s9rHrfvGDMtLwM86s96LqM8f///7/NQQYk////v3KO6Tr///8/+VvMwf///z+ns1bM////v6ezqDP///+/zUH42////7/ounIO////v3KOFcX///8/+VsyPv///z9bsgup////P/9///////+/W7LzVv///z//fwAA////v/LWXDL///+/8taizf///7/5K5kU////v/grY+v///+/3TIiTf///7/dMtyy////v2Vr+Kv///8/Y2sHVP///z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5y1xy")
+
+[sub_resource type="Gradient" id="Gradient_ywlf8"]
+offsets = PackedFloat32Array(0, 0.33333334, 0.6666667, 1)
+colors = PackedColorArray(0.99, 0.99, 0.1881, 1, 1, 0.48000008, 0.35000002, 1, 0.5338298, 0.02069998, 0.69, 0.54509807, 0.2, 0.062000003, 0.16090001, 0)
+metadata/_snap_count = 3
+
+[node name="Starcore" instance=ExtResource("1_701nf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+script = ExtResource("2_hwevu")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_hwevu")
+
+[node name="CollectParticle" type="CPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052678622, 0)
+emitting = false
+amount = 250
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+mesh = SubResource("ArrayMesh_ywlf8")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_ywlf8")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
