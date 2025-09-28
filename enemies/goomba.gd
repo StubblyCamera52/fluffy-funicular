@@ -2,14 +2,6 @@ extends Enemy
 
 var target_player = null
 
-func take_damage(dmg_amount: int) -> void:
-	health -= dmg_amount
-	if health <= 0:
-		die()
-
-func die() -> void:
-	queue_free()
-
 func _ready() -> void:
 	identifier = "enemy"
 	damage = 5

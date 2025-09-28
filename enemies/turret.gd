@@ -5,15 +5,7 @@ var firing = false
 var target_rotation = 0
 @export var ROTATE_SPEED := 5
 @export var BULLET_SPEED = 10
-var bullet_scene = preload("res://assets/objects/bullet.tscn")
-
-func take_damage(dmg_amount: int) -> void:
-	health -= dmg_amount
-	if health <= 0:
-		die()
-
-func die() -> void:
-	queue_free()
+@onready var bullet_scene = load("res://assets/objects/bullet.tscn")
 
 func _ready() -> void:
 	actor_setup.call_deferred()
