@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drr3esl1pjkv1"]
+[gd_scene load_steps=9 format=3 uid="uid://drr3esl1pjkv1"]
 
 [ext_resource type="Script" uid="uid://c2m8fd326ca7v" path="res://enemies/goomba.gd" id="1_0xjyw"]
 [ext_resource type="PackedScene" uid="uid://djmhg252dajnb" path="res://assets/models/goombatype.glb" id="2_k53gf"]
@@ -22,6 +22,10 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="Gradient" id="Gradient_ac7lm"]
 offsets = PackedFloat32Array(0.12022631, 0.2956153, 0.41301274, 0.53889674, 0.77369165)
 colors = PackedColorArray(1, 1, 1, 1, 0.9491671, 0.5401308, 0.4448742, 1, 0.9174617, 0.39434776, 1.92523e-07, 1, 0.552962, 1.3596937e-06, 4.813075e-07, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_k53gf"]
+offsets = PackedFloat32Array(0, 0.84246576, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.74509805, 0, 1, 0.6666667, 0, 0.32941177, 1)
 
 [node name="Goomba" type="CharacterBody3D"]
 collision_layer = 8
@@ -63,6 +67,25 @@ initial_velocity_max = 10.0
 scale_amount_min = 0.5
 scale_amount_max = 1.5
 color_ramp = SubResource("Gradient_ac7lm")
+
+[node name="DamageParticle" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+emitting = false
+amount = 10
+lifetime = 0.09999999999999999
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+mesh = SubResource("BoxMesh_ac7lm")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(1, 0.84705883, 0.5411765, 1)
+color_ramp = SubResource("Gradient_k53gf")
 
 [connection signal="body_entered" from="TargetingArea" to="." method="_on_targeting_area_body_entered"]
 [connection signal="body_exited" from="TargetingArea" to="." method="_on_targeting_area_body_exited"]

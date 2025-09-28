@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var death_particle = self.get_node_or_null("DeathParticle")
+@onready var damage_particle = self.get_node_or_null("DamageParticle")
 
 # enemy config
 @export var movement_speed: float = 5.0
@@ -23,6 +24,9 @@ func take_damage(dmg_amount: int) -> void:
 	health -= dmg_amount
 	if health <= 0:
 		die()
+	else:
+		if damage_particle:
+			damage_particle.restart()
 
 func die() -> void:
 	PlayerGlobalManager.give_player_xp(1)
