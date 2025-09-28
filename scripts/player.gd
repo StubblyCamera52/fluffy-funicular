@@ -100,8 +100,9 @@ func _physics_process(delta: float) -> void:
 				player_velocity.x += player_direction.x * ACCELERATION
 				player_velocity.z += player_direction.z * ACCELERATION
 		PLAYER_STATES.ATTACKING:
-			for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
-				body.take_damage(10)
+			if attack_time < 0.2 and attack_time>0.05:
+				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
+					body.take_damage(10)
 			_playerAnimator.playback_default_blend_time = 0.25
 		PLAYER_STATES.KNOCKBACK:
 			pass

@@ -7,7 +7,7 @@
 height = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
-size = Vector3(0.6, 1, 0.6)
+size = Vector3(0.6, 1.5702515, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
 size = Vector3(2.5, 2, 1.371)
@@ -41,7 +41,7 @@ collision_layer = 2
 collision_mask = 264
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyCollisionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4390214, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72414714, 0)
 shape = SubResource("BoxShape3D_4flbx")
 
 [node name="PlayerModel" parent="." instance=ExtResource("2_onrkg")]

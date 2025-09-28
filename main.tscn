@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=9 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
@@ -10,14 +10,8 @@
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ig7tw"]
-vertices = PackedVector3Array(-49.5, 1, -8.25, -11.5, 1, -8.25, -11.5, 1, -10.25, -10.25, 1, -10.5, -10.25, 1, -49.5, -49.5, 1, -49.5, -9.25, 1, -10.25, 49.5, 1, -9, 49.5, 1, -49.5, -9.25, 1, -8.75, -9.25, 1, 9, 49.5, 1, 9.25, -49.5, 1, 8.5, -11.5, 1, 8.5, -11.5, 1, 10.5, -10.25, 1, 49.5, -10.25, 1, 10.75, -49.5, 1, 49.5, -9.25, 1, 10.5, 49.5, 1, 49.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(3, 4, 6), PackedInt32Array(6, 4, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(7, 9, 6), PackedInt32Array(9, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(0, 1, 12), PackedInt32Array(12, 1, 13), PackedInt32Array(12, 13, 14), PackedInt32Array(14, 16, 12), PackedInt32Array(12, 16, 15), PackedInt32Array(12, 15, 17), PackedInt32Array(16, 18, 15), PackedInt32Array(15, 18, 19), PackedInt32Array(19, 18, 11), PackedInt32Array(18, 10, 11)]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
-size = Vector3(1, 6, 19.988869)
+vertices = PackedVector3Array(-9.666996, 1, -37.5, -9.666996, 1, -49.5, -49.666996, 1, -49.5, -49.666996, 1, -37.5, -7.666996, 1, -37.5, -7.416996, 1, -36.25, -0.916996, 1, -36.25, -0.666996, 1, -37.5, 1.333004, 1, -49.5, 1.333004, 1, -37.5, 49.583004, 1, -37.5, 49.583004, 1, -49.5, -54.666996, 9.5, -36.5, -54.666996, 9.5, -36, -8.416996, 9.5, -36, -8.416996, 9.5, -36.5, 0.083004, 9.5, -36.5, 0.083004, 9.5, -36, 55.583004, 9.5, -36, 55.583004, 9.5, -36.5, -0.916996, 1, -35.25, -7.666996, 1, -35, -9.416996, 1, -10.5, -9.166996, 1, -10, -0.416996, 1, -35, -10.416996, 1, -35, -10.416996, 1, -10.5, -11.416996, 1, -10.25, -49.666996, 1, -35, -49.666996, 1, -9, -11.416996, 1, -8.75, 38.083004, 1, -4, 49.583004, 1, -4, 49.583004, 1, -35, -9.166996, 1, -2.25, 37.833004, 1, -2.25, -49.666996, 1, 9.25, -11.416996, 1, 9, 38.833004, 27.75, -3, 38.833004, 27.75, -1.25, 49.083004, 27.75, -1.25, 49.083004, 27.75, -3, 37.833004, 1, 7.25, 39.833004, 1, 7, 39.833004, 1, -0.25, 37.833004, 1, -0.5, -9.166996, 1, 9, 37.833004, 1, 9, 49.583004, 1, 7, 49.583004, 1, -0.25, 38.833004, 14.5, 8, 38.833004, 14.5, 22, 49.083004, 14.5, 22, 49.083004, 14.5, 8, -11.416996, 1, 10.5, -10.166996, 1, 49.5, -10.166996, 1, 10.75, -49.666996, 1, 49.5, 37.833004, 1, 25.5, 49.583004, 1, 25.25, 49.583004, 1, 23, 37.833004, 1, 22.75, -9.166996, 1, 10.5, 49.583004, 1, 49.5, 49.583004, 1, 29, 38.083004, 1, 29, 38.833004, 27.75, 26.25, 38.833004, 27.75, 28, 49.083004, 27.75, 28, 49.083004, 27.75, 26.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 1), PackedInt32Array(7, 1, 8), PackedInt32Array(4, 0, 1), PackedInt32Array(8, 9, 7), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(5, 6, 20), PackedInt32Array(20, 24, 5), PackedInt32Array(5, 24, 21), PackedInt32Array(21, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(26, 25, 22), PackedInt32Array(22, 25, 21), PackedInt32Array(26, 27, 25), PackedInt32Array(25, 27, 28), PackedInt32Array(28, 27, 29), PackedInt32Array(27, 30, 29), PackedInt32Array(33, 32, 31), PackedInt32Array(23, 24, 34), PackedInt32Array(34, 24, 31), PackedInt32Array(31, 24, 33), PackedInt32Array(31, 35, 34), PackedInt32Array(37, 36, 30), PackedInt32Array(30, 36, 29), PackedInt32Array(41, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(45, 42, 46), PackedInt32Array(45, 46, 34), PackedInt32Array(34, 35, 45), PackedInt32Array(42, 47, 46), PackedInt32Array(44, 49, 43), PackedInt32Array(43, 49, 48), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(36, 37, 54), PackedInt32Array(56, 55, 54), PackedInt32Array(54, 55, 57), PackedInt32Array(54, 57, 36), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 61), PackedInt32Array(62, 61, 58), PackedInt32Array(65, 64, 63), PackedInt32Array(56, 62, 55), PackedInt32Array(55, 62, 65), PackedInt32Array(55, 65, 63), PackedInt32Array(46, 47, 62), PackedInt32Array(62, 47, 61), PackedInt32Array(65, 62, 58), PackedInt32Array(69, 68, 66), PackedInt32Array(66, 68, 67)]
 
 [node name="main" type="Node3D"]
 
@@ -35,46 +29,35 @@ shadow_enabled = true
 [node name="NavigatableLevel" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ig7tw")
 
-[node name="Floor" type="StaticBody3D" parent="NavigatableLevel"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigatableLevel"]
+use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/Floor"]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 size = Vector3(100, 1, 100)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigatableLevel/Floor"]
-shape = SubResource("BoxShape3D_7dm0k")
-
-[node name="Wall" type="StaticBody3D" parent="NavigatableLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.343927, 0, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.308538, 0)
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.343927, 3.308538, 0)
 size = Vector3(1, 6, 20)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigatableLevel/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304183, -0.0011482239)
-shape = SubResource("BoxShape3D_ig7tw")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigatableLevel"]
-transform = Transform3D(47.16198, 0, 0, 0, 1.4273311, 0, 0, 0, 0.21117008, -31.586008, 0, -36.278236)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/StaticBody3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.32296038, 0, 3.3085382, 0)
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(47.161976, 0, 0, 0, 1.4273311, 0, 0, 0, 0.06819957, -31.586008, 4.722379, -36.278236)
 size = Vector3(1, 6, 20)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigatableLevel/StaticBody3D"]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304183, -0.02053833)
-shape = SubResource("BoxShape3D_ig7tw")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigatableLevel"]
-transform = Transform3D(56.248295, 0, 0, 0, 1.4273311, 0, 0, 0, 0.21117008, 27.94739, 0, -36.278236)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigatableLevel/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.31107244, 0, 3.3085382, 0)
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(56.248295, 0, 0, 0, 1.4273311, 0, 0, 0, 0.06568919, 27.94739, 4.722379, -36.278236)
 size = Vector3(1, 6, 20)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigatableLevel/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304183, 0)
-shape = SubResource("BoxShape3D_ig7tw")
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.974426, 13.838934, -2.140756)
+size = Vector3(11.1073, 27.060791, 2.4589844)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.974426, 7.1825614, 14.920654)
+size = Vector3(11.1073, 13.748047, 14.759277)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.974426, 13.838934, 27.078257)
+size = Vector3(11.1073, 27.060791, 2.4589844)
 
 [node name="Goomba" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.491486, 1.6414824, 31.62574)

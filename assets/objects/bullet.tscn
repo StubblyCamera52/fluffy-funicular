@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2cy47y8vgu4s"]
 
-[ext_resource type="Script" path="res://assets/objects/bullet.gd" id="1_r45dv"]
+[ext_resource type="Script" uid="uid://bgetbw4njo7gb" path="res://assets/objects/bullet.gd" id="1_r45dv"]
 [ext_resource type="PackedScene" uid="uid://dr2ofdqwbh78" path="res://assets/models/turretlaser.glb" id="2_togti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r45dv"]
@@ -15,6 +15,7 @@ gravity_scale = 0.0
 continuous_cd = true
 max_contacts_reported = 1
 script = ExtResource("1_r45dv")
+damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0093688965)

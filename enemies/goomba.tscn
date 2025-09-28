@@ -17,6 +17,7 @@ movement_speed = 10.0
 metadata/_custom_type_script = "uid://dayute38a7ih5"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030517578, 0.3086548, 0.015258789)

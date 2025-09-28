@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		
 		if nav_agent.is_navigation_finished():
 			if !is_on_floor():
-				velocity.y -= 1
+				velocity.y -= 20*delta
 			else:
 				velocity.y = 0
 			move_and_slide()
@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		velocity = global_position.direction_to(next_location)*movement_speed
 	
 	if !is_on_floor():
-		velocity.y += get_gravity().y*delta
+		velocity.y += -20*delta
 	else:
 		is_being_knocked_back = false
 		velocity.y = 0
