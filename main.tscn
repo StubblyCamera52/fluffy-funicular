@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=16 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dcdje2f04xlmw" path="res://assets/objects/starcore.tscn" id="6_kek77"]
 [ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c6b7bnj8amhtc" path="res://ui.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://cgwowobc7aana" path="res://enemies/wall_guy.tscn" id="11_efxa6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_272bh"]
 panorama = ExtResource("2_7mycd")
@@ -372,6 +373,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.53247, 3.5190063, -166.9
 [node name="Turret5" parent="Goombers" instance=ExtResource("8_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.55154, 3.5190063, -166.998)
 
+[node name="Goomba4" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.268978, 3.7322738, -173.63663)
+
+[node name="Goomba7" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.877453, 3.7322814, -174.59586)
+
+[node name="Goomba8" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.199723, 3.7836158, -156.23888)
+
+[node name="Goomba9" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.78345, 3.7836044, -177.88727)
+
+[node name="Goomba10" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.496056, 3.7836044, -200.04823)
+
+[node name="Goomba11" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.407982, 0.75053865, -147.05556)
+
+[node name="Goomba12" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.274467, 0.75053865, -169.5989)
+
+[node name="Goomba13" parent="Goombers" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.36547, 3.783612, -141.98486)
+
 [node name="UI" parent="." instance=ExtResource("9_kek77")]
 
 [node name="Sacrifice Door Model" parent="." instance=ExtResource("6_7mycd")]
@@ -380,26 +405,5 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -48.365433, 3.4450245, -130.7
 [node name="Starcore" parent="." instance=ExtResource("6_kek77")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 23.842243, 5.7678156, -62.46865)
 
-[node name="Goomba" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.268978, 3.7322738, -173.63663)
-
-[node name="Goomba2" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.877453, 3.7322814, -174.59586)
-
-[node name="Goomba3" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.199723, 3.7836158, -156.23888)
-
-[node name="Goomba4" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.78345, 3.7836044, -177.88727)
-
-[node name="Goomba5" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.496056, 3.7836044, -200.04823)
-
-[node name="Goomba6" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.407982, 0.75053865, -147.05556)
-
-[node name="Goomba7" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.274467, 0.75053865, -169.5989)
-
-[node name="Goomba8" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.36547, 3.783612, -141.98486)
+[node name="WallGuy" parent="." instance=ExtResource("11_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.202461, 0.5030065, -1.6734581)

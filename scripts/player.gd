@@ -88,14 +88,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_pivot.rotation.x -= event.relative.y * mouse_sens
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -cam_tilt_limit, cam_tilt_limit)
 		_camera_pivot.rotation.y -= event.relative.x * mouse_sens
-	if event.is_action_pressed("Jump"):
+	if event.is_action_pressed("Jump") and not current_player_state == PLAYER_STATES.SACRIFICE:
 		if is_on_floor() or times_jumped < PlayerGlobalManager.player_num_jumps:
 			times_jumped += 1
 			player_velocity.y=JUMP_VELOCITY
 		if is_on_wall_only() and PlayerGlobalManager.player_can_wall_jump:
 			if Vector2(get_wall_normal().x,get_wall_normal().z).length() > 0.9:
 				player_velocity = (60*Vector3(get_wall_normal().x,0,get_wall_normal().z))+Vector3(0,JUMP_VELOCITY,0)
-	if event.is_action_pressed("Attack") and attack_time==0:
+	if event.is_action_pressed("Attack") and attack_time==0 and not current_player_state == PLAYER_STATES.SACRIFICE:
 		attack_time=0.35
 		current_player_state=PLAYER_STATES.ATTACKING
 		_playerAnimator.playback_default_blend_time = 0.05
@@ -136,7 +136,7 @@ func _physics_process(delta: float) -> void:
 				player_velocity.x += player_direction.x * ACCELERATION
 				player_velocity.z += player_direction.z * ACCELERATION
 		PLAYER_STATES.ATTACKING:
-			if attack_time < 0.25 and attack_time>0.025:
+			if attack_time < 0.25 and attack_time>0.05:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
 					body.take_damage(10)
 			if attack_time<=0:

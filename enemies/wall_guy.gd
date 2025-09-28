@@ -1,10 +1,12 @@
 extends Enemy
 
+@onready var _animator = $charger/AnimationPlayer
 var target_pos: Vector3 = Vector3.ZERO
 var charging := false
 var direction := Vector2.ZERO
 
 func _ready() -> void:
+	_animator.play("Idle")
 	actor_setup.call_deferred()
 	damage = 20
 	movement_speed = 20
