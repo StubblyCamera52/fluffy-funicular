@@ -1,5 +1,7 @@
 extends Enemy
 
+@onready var _animator: AnimationPlayer = $GoombaModel/AnimationPlayer
+
 var target_player = null
 
 func _ready() -> void:
@@ -12,12 +14,19 @@ func actor_setup():
 
 	
 func _physics_process(delta: float) -> void:
+	print(velocity)
+	_animator.set_blend_time("Walk","Idle",0.25)
+	_animator.set_blend_time("Walk","Idle",0.25)
+	if velocity.length()>5:
+		_animator.play("Walk",-1,velocity.length()/4.5)
+		rotation.y = PI/2-Vector2(velocity.x,velocity.z).angle()
+	else:
+		_animator.play("Idle")
 	if target_player != null:
 		set_movement_target(target_player.global_position)
-	
+	velocity = Vector3.ZERO
 	if nav_agent.is_navigation_finished():
 		return
-	
 	var next_location := nav_agent.get_next_path_position()
 	velocity = global_position.direction_to(next_location)*movement_speed
 	

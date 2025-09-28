@@ -2,24 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dju1ujsk08v85"
-path.s3tc="res://.godot/imported/turret_Turret Tex.png-dab392b2a77c5365d59d79027a0aab56.s3tc.ctex"
+uid="uid://c62wlkplsxqu4"
+path="res://.godot/imported/goombatype_goombatype tex.png-1abaec4f114e90d2ce1f3d618a3eea05.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "8a1542f5e750969ff59676f99063db33"
+"md5": "57819624fe076fd67009d0fcc5ea9368"
 }
 
 [deps]
 
-source_file="res://assets/models/turret_Turret Tex.png"
-dest_files=["res://.godot/imported/turret_Turret Tex.png-dab392b2a77c5365d59d79027a0aab56.s3tc.ctex"]
+source_file="res://assets/textures/goombatype_goombatype tex.png"
+dest_files=["res://.godot/imported/goombatype_goombatype tex.png-1abaec4f114e90d2ce1f3d618a3eea05.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
