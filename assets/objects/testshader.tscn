@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcws5ocn0emts"]
+
+[ext_resource type="Shader" uid="uid://b15mnj7hjxshg" path="res://assets/shaders/testshader.tres" id="1_rgbh8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbjnq"]
+render_priority = 0
+shader = ExtResource("1_rgbh8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jbjnq"]
+material = SubResource("ShaderMaterial_jbjnq")
+size = Vector2(2, 2)
+
+[node name="Testshader" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("QuadMesh_jbjnq")
