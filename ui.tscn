@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6b7bnj8amhtc"]
+[gd_scene load_steps=3 format=3 uid="uid://c6b7bnj8amhtc"]
 
 [ext_resource type="Script" uid="uid://doijypkx2iodj" path="res://scripts/ui.gd" id="1_fyqef"]
+
+[sub_resource type="Theme" id="Theme_fyqef"]
+default_font_size = 30
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -12,24 +15,26 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme = SubResource("Theme_fyqef")
 script = ExtResource("1_fyqef")
 
 [node name="Ability Unlock" type="RichTextLabel" parent="."]
+clip_contents = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -284.0
-offset_top = -128.0
-grow_horizontal = 0
+offset_top = -42.0
+grow_horizontal = 2
 grow_vertical = 0
+size_flags_vertical = 8
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 21
-theme_override_font_sizes/bold_font_size = 21
 bbcode_enabled = true
 fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="DisplayTimer" type="Timer" parent="Ability Unlock"]
 wait_time = 4.0
