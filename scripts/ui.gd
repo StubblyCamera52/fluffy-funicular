@@ -8,7 +8,7 @@ func _init() -> void:
 	PlayerGlobalManager.player_obtained_collectable.connect(update_collectable_ui)
 
 func update_collectable_ui():
-	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/1")
+	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/2")
 
 func update_player_health_ui(pos: Vector3) -> void:
 	$MarginContainer/VBoxContainer/health.text = str("Health: "+str(PlayerGlobalManager.player_health)+str("/100"))
