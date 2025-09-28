@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8jbxjij2jd3"
-path="res://.godot/imported/funicular goober_funicular goober tex.png-6154072c2c12f05b62e33f00b5b4f62f.ctex"
+uid="uid://mji63fmdw2v7"
+path.s3tc="res://.godot/imported/turret_Turret Tex.png-bbb6ddb69842527f0a3643c8ead78229.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "51a910a2b6be9fc0436890b69c997627"
+"md5": "8a1542f5e750969ff59676f99063db33"
 }
 
 [deps]
 
-source_file="res://assets/textures/funicular goober_funicular goober tex.png"
-dest_files=["res://.godot/imported/funicular goober_funicular goober tex.png-6154072c2c12f05b62e33f00b5b4f62f.ctex"]
+source_file="res://enemies/turret_Turret Tex.png"
+dest_files=["res://.godot/imported/turret_Turret Tex.png-bbb6ddb69842527f0a3643c8ead78229.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		
 	
 	if !is_on_floor():
-		velocity = Vector3(0, -1, 0)
+		velocity = Vector3(0, -50, 0)
 	
 	move_and_slide()
 
@@ -43,7 +43,8 @@ func _physics_process(delta: float) -> void:
 func shoot_bullet(target_pos: Vector3):
 	var bullet: RigidBody3D = bullet_scene.instantiate()
 	get_parent_node_3d().add_child(bullet)
-	bullet.position = global_position + Vector3(0,.5,0)
+	bullet.position = global_position + Vector3(0,1,0)
+	bullet.rotation.y = rotation.y
 	bullet.apply_central_impulse((target_pos-global_position).normalized()*BULLET_SPEED)
 	
 

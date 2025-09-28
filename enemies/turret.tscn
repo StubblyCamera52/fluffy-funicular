@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://2f2frnk5w48q"]
+[gd_scene load_steps=5 format=3 uid="uid://2f2frnk5w48q"]
 
 [ext_resource type="Script" uid="uid://cs2q7nkrb50ks" path="res://enemies/turret.gd" id="1_43anh"]
+[ext_resource type="PackedScene" uid="uid://d4b5q3rbvmto0" path="res://assets/models/turret.glb" id="2_ni5yt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43anh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43anh"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ni5yt"]
-material = SubResource("StandardMaterial3D_43anh")
+size = Vector3(1, 1.8702393, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_43anh"]
 radius = 30.0
@@ -22,12 +18,8 @@ BULLET_SPEED = 50
 metadata/_custom_type_script = "uid://dayute38a7ih5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9351196, 0)
 shape = SubResource("BoxShape3D_43anh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_ni5yt")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 8
@@ -43,6 +35,15 @@ autostart = true
 [node name="RapidFireTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="turret" parent="." instance=ExtResource("2_ni5yt")]
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.133153, 0)
+light_color = Color(1, 0, 0.17254902, 1)
+light_energy = 2.0
+spot_range = 6.2028594
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
