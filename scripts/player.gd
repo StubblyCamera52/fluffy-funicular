@@ -137,6 +137,8 @@ func _physics_process(delta: float) -> void:
 		PLAYER_STATES.KNOCKBACK:
 			pass
 		PLAYER_STATES.SACRIFICE:
+			player_velocity.x = move_toward(player_velocity.x, 0,delta*15)
+			player_velocity.z = move_toward(player_velocity.z, 0,delta*15)
 			sacrifice_timer-=delta
 			if sacrifice_timer <= 0:
 				current_player_state = PLAYER_STATES.BASIC
