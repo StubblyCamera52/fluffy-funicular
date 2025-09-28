@@ -2,6 +2,7 @@ class_name Enemy
 extends CharacterBody3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var death_particle = self.get_node_or_null("DeathParticle")
 
 # enemy config
 @export var movement_speed: float = 5.0
@@ -25,6 +26,8 @@ func take_damage(dmg_amount: int) -> void:
 
 func die() -> void:
 	PlayerGlobalManager.give_player_xp(1)
+	if death_particle:
+		death_particle.restart()
 	health = max_health
 	global_position.y -= 100
 	await get_tree().create_timer(5).timeout
