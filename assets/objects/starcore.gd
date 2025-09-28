@@ -4,6 +4,7 @@ extends Node3D
 @onready var model = $Armature
 
 func _ready() -> void:
+	particle.restart()
 	animator.play("Spin")
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

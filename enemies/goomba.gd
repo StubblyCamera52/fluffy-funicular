@@ -7,6 +7,8 @@ var knock_back := false
 var target_player = null
 
 func _ready() -> void:
+	death_particle.restart()
+	damage_particle.restart()
 	original_pos = global_position
 	identifier = "enemy"
 	damage = 5
