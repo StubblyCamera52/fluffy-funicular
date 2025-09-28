@@ -10,7 +10,7 @@ height = 1.5
 size = Vector3(0.97230834, 1.5702515, 0.8570312)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
-size = Vector3(2.5, 2, 1.371)
+size = Vector3(2.5, 2, 1.5912617)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -52,7 +52,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/AttackCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06323242, 0, -0.13342285)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06323242, 0, -0.023292005)
 shape = SubResource("BoxShape3D_onrkg")
 
 [node name="KnockbackTimer" type="Timer" parent="."]
