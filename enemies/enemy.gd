@@ -34,7 +34,7 @@ func die() -> void:
 		death_particle.restart()
 	health = max_health
 	global_position.y -= 100
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(20).timeout
 	global_position = original_pos
 
 func _ready() -> void:

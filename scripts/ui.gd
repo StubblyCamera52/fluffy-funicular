@@ -11,7 +11,7 @@ func update_collectable_ui():
 	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/1")
 
 func update_player_health_ui(pos: Vector3) -> void:
-	$MarginContainer/VBoxContainer/health.text = str("Health: "+str(PlayerGlobalManager.player_health))
+	$MarginContainer/VBoxContainer/health.text = str("Health: "+str(PlayerGlobalManager.player_health)+str("/100"))
 
 func update_player_level_ui() -> void:
 	$MarginContainer/VBoxContainer/level.text = str("Level: "+str(PlayerGlobalManager.player_level))
@@ -25,16 +25,16 @@ func update_ability_ui() -> void:
 	if PlayerGlobalManager.player_level > previous_level:
 		match PlayerGlobalManager.player_level:
 			2:
-				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Double Jump[/color]\nJump in the air to activate'''
+				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=yellow]Double Jump[/color]\nJump in the air to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			3:
-				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Wall Jump[/color]\nJump off a wall to activate'''
+				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=yellow]Wall Jump[/color]\nJump midair next to a wall to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			4:
-				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Air Dash[/color]\n Use [Special] in the air to activate'''
+				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=yellow]Air Dash[/color]\n Press Shift in the air to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			5:
-				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=green]Triple Jump[/color]\nJump in the air to activate'''
+				$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b]New Ability Unlocked:[/b][/shake]\n[color=yellow]Triple Jump[/color]\nJump in the air to activate'''
 				$"Ability Unlock/DisplayTimer".start()
 			_:
 				pass

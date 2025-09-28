@@ -270,7 +270,7 @@ size = Vector3(15.265467, 3.5954905, 11.341418)
 material = ExtResource("4_kek77")
 
 [node name="Starcore" parent="NavigatableLevel/CSGCombiner3D/Factory" instance=ExtResource("6_kek77")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -67.04449, -3.7781057, -59.854523)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -67.04449, -3.076519, -59.854523)
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/Factory"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.01861, 9.240715, -10.197449)
@@ -311,14 +311,19 @@ spot_range = 36.009655
 spot_angle = 66.64818
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="NavigatableLevel/CSGCombiner3D/Factory"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -66.995995, 4.6343575, -58.68878)
-light_energy = 64.0
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -66.995995, 6.5903645, -58.68878)
+light_energy = 32.0
 light_size = 0.515
-spot_range = 17.262062
+spot_range = 16.20208
 spot_angle = 37.723248
 
 [node name="Sacrifice Door Model2" parent="NavigatableLevel/CSGCombiner3D/Factory" instance=ExtResource("6_7mycd")]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 1.0611267, -8.17259, -10.755157)
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/Factory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.32753, -5.753912, -16.84877)
+size = Vector3(2.7045698, 4.8393707, 18.54021)
+material = ExtResource("4_kek77")
 
 [node name="L2Dirt5" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
 transform = Transform3D(-4.3254868e-08, -6.3009504e-09, 1, -0.14414895, 0.989556, 0, -0.989556, -0.14414895, -4.371139e-08, -49.390877, -0.18937361, -191.56474)
@@ -353,19 +358,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.18784, 1.2578373, -86.5545
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.596806, 0.7837591, -81.106026)
 
 [node name="Turret" parent="Goombers" instance=ExtResource("8_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.11852, 1.2259812, -152.22813)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.11852, 3.5190063, -152.22813)
 
 [node name="Turret2" parent="Goombers" instance=ExtResource("8_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.40145, 1.2259812, -150.35771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.40145, 3.5190063, -150.35771)
 
 [node name="Turret3" parent="Goombers" instance=ExtResource("8_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.80598, 1.2259812, -166.998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.80598, 3.5190063, -166.998)
 
 [node name="Turret4" parent="Goombers" instance=ExtResource("8_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.53247, 1.2259812, -166.998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.53247, 3.5190063, -166.998)
 
 [node name="Turret5" parent="Goombers" instance=ExtResource("8_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.55154, 1.2259812, -166.998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.55154, 3.5190063, -166.998)
 
 [node name="UI" parent="." instance=ExtResource("9_kek77")]
 

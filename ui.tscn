@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6b7bnj8amhtc"]
+[gd_scene load_steps=4 format=3 uid="uid://c6b7bnj8amhtc"]
 
 [ext_resource type="Script" uid="uid://doijypkx2iodj" path="res://scripts/ui.gd" id="1_fyqef"]
+[ext_resource type="FontFile" uid="uid://cr3urol6nqyf0" path="res://assets/FOT-Rodin Pro B.otf" id="2_m6e0p"]
 
 [sub_resource type="Theme" id="Theme_fyqef"]
 default_font_size = 30
@@ -26,10 +27,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -42.0
+offset_right = -21.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_m6e0p")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -53,18 +57,22 @@ mouse_filter = 2
 
 [node name="health" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Health: 100"
+theme_override_fonts/font = ExtResource("2_m6e0p")
+text = "Health: 100/100"
 
 [node name="xpToNextLevel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m6e0p")
 text = "XP to next level: 5"
 
 [node name="level" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m6e0p")
 text = "Level: 1"
 
 [node name="collectibles" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m6e0p")
 text = "Collectibles: 0/1"
 
 [connection signal="timeout" from="Ability Unlock/DisplayTimer" to="." method="_on_display_timer_timeout"]
