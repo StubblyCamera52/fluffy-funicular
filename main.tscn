@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=18 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dcdje2f04xlmw" path="res://assets/objects/starcore.tscn" id="6_kek77"]
 [ext_resource type="PackedScene" uid="uid://2f2frnk5w48q" path="res://enemies/turret.tscn" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c6b7bnj8amhtc" path="res://ui.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://2hccqskyxo5i" path="res://assets/models/sign.glb" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://rss6l1jqgbfp" path="res://enemies/wall_guy.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://oyd40uvfb3mu" path="res://assets/models/sign2.glb" id="12_ycdy4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_272bh"]
 panorama = ExtResource("2_7mycd")
@@ -333,8 +335,8 @@ size = Vector3(28.738487, 3.2519567, 14.726616)
 material = ExtResource("2_272bh")
 
 [node name="L2Dirt6" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.520496, -2.276187, -126.54151)
-size = Vector3(25.738707, 10.573365, 8.59986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.520496, -2.3343987, -126.54151)
+size = Vector3(25.738707, 11.258575, 8.59986)
 material = ExtResource("2_272bh")
 
 [node name="L2Grass" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/L2Dirt6"]
@@ -466,6 +468,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.469616, 18.09864, -306.99
 
 [node name="WallGuy2" parent="Goombers" instance=ExtResource("11_efxa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.652153, 1.006013, -279.43536)
+
+[node name="sign" parent="Goombers" instance=ExtResource("11_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6758661, 0.5, -4.0023775)
+
+[node name="sign2" parent="Goombers" instance=ExtResource("12_ycdy4")]
+transform = Transform3D(0.9403119, 0, -0.3403139, 0, 1, 0, 0.3403139, 0, 0.9403119, -41.656, 3.5198822, -127.06284)
 
 [node name="UI" parent="." instance=ExtResource("9_kek77")]
 
