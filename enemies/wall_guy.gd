@@ -26,6 +26,9 @@ func take_damage(dmg_amount: int) -> void:
 	knock_back = true
 	if health <= 0:
 		die()
+	else:
+		if damage_particle:
+			damage_particle.restart()
 
 func set_movement_target(movement_target: Vector3):
 	pass

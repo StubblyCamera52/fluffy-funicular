@@ -474,4 +474,4 @@ transform = Transform3D(0.40960005, 0, 0, 0, 0.40960005, 0, 0, 0, 0.40960005, -1
 collectibleName = "Middle of Somewhere"
 
 [node name="WallGuy" parent="." instance=ExtResource("11_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.202461, 0.5030065, -1.6734581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2249155, 0.5030065, -253.28656)

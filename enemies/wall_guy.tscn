@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://rss6l1jqgbfp"]
+[gd_scene load_steps=9 format=3 uid="uid://rss6l1jqgbfp"]
 
 [ext_resource type="Script" uid="uid://bkfascnyveqg4" path="res://enemies/wall_guy.gd" id="1_wxn2a"]
 [ext_resource type="PackedScene" uid="uid://hih0x0ccj5wb" path="res://assets/models/charger.glb" id="2_thjt0"]
@@ -8,6 +8,24 @@ size = Vector3(2.116272, 2.0067139, 2.2922363)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wxn2a"]
 radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thjt0"]
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_4cjel"]
+material = SubResource("StandardMaterial3D_thjt0")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_b8brd"]
+offsets = PackedFloat32Array(0.12022631, 0.2956153, 0.41301274, 0.53889674, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9491671, 0.5401308, 0.4448742, 1, 0.9174617, 0.39434776, 1.92523e-07, 1, 0.552962, 1.3596937e-06, 4.813075e-07, 1, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_7lstb"]
+offsets = PackedFloat32Array(0, 0.70547944, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.75, 0, 0.64705884, 0.67, 0, 0.335, 0)
 
 [node name="WallGuy" type="CharacterBody3D"]
 collision_layer = 8
@@ -34,6 +52,42 @@ wait_time = 2.0
 one_shot = true
 
 [node name="charger" parent="." instance=ExtResource("2_thjt0")]
+
+[node name="DeathParticle" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1399162, 0)
+emitting = false
+amount = 250
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+mesh = SubResource("BoxMesh_4cjel")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_b8brd")
+
+[node name="DamageParticle" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1779971, 0.06738961)
+emitting = false
+amount = 10
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+mesh = SubResource("BoxMesh_4cjel")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(1, 0.84705883, 0.5411765, 1)
+color_ramp = SubResource("Gradient_7lstb")
 
 [connection signal="timeout" from="Chargeup" to="." method="_on_chargeup_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
