@@ -6,11 +6,18 @@ func _init() -> void:
 	PlayerGlobalManager.xp_changed.connect(update_xp_next_level_ui)
 	PlayerGlobalManager.xp_changed.connect(update_ability_ui)
 	PlayerGlobalManager.player_obtained_collectable.connect(update_collectable_ui)
+	PlayerGlobalManager.sacrifice.connect(lost_levels)
 
 func update_collectable_ui(subtitle: String):
 	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/7")
 	$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b][color=yellow]YOU GOT A STARCORE![/color][/b][/shake]\n'''+'"'+subtitle+'"'
 	$"Ability Unlock/DisplayTimer".start()
+
+func lost_levels(pos: Vector3):
+	await get_tree().create_timer(4.5).timeout
+	$"Ability Unlock".text = '''[shake rate=20.0 level=15 connected=1][b][color=red]SACRIFICED 1 LEVEL[/color][/b][/shake]\n'''
+	$"Ability Unlock/DisplayTimer".start()
+	
 
 func update_player_health_ui(pos: Vector3) -> void:
 	$MarginContainer/VBoxContainer/health.text = str("Health: "+str(PlayerGlobalManager.player_health)+str("/100"))
