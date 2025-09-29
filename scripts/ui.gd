@@ -9,7 +9,7 @@ func _init() -> void:
 	PlayerGlobalManager.sacrifice.connect(lost_levels)
 
 func update_collectable_ui(subtitle: String):
-	$MarginContainer/VBoxContainer/collectibles.text = str("Collectables: "+str(PlayerGlobalManager.player_collectables)+"/7")
+	$MarginContainer/VBoxContainer/collectibles.text = str("Starcores: "+str(PlayerGlobalManager.player_collectables)+"/7")
 	$"Ability Unlock".text = '''[shake rate=20.0 level=5 connected=1][b][color=yellow]YOU GOT A STARCORE![/color][/b][/shake]\n'''+'"'+subtitle+'"'
 	$"Ability Unlock/DisplayTimer".start()
 
