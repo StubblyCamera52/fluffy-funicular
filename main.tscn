@@ -453,7 +453,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.36547, 3.783612, -141.984
 [node name="Sacrifice Door Model" parent="." instance=ExtResource("6_7mycd")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -48.365433, 3.4450245, -130.70705)
 
-[node name="Starcore" parent="." instance=ExtResource("6_kek77")]
+[node name="StarcoreFactory" parent="." instance=ExtResource("6_kek77")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 23.842243, 5.7678156, -62.46865)
 collectibleName = "At Castle's End"
 

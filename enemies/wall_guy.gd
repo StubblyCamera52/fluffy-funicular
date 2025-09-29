@@ -7,6 +7,7 @@ var direction := Vector2.ZERO
 var knock_back := false
 var target_player = null
 var is_being_knocked_back := false
+var targetAngle: float = 0
 
 func _ready() -> void:
 	_animator.play("Idle")
@@ -30,6 +31,7 @@ func set_movement_target(movement_target: Vector3):
 	pass
 	
 func _physics_process(delta: float) -> void:
+	rotation.y = lerp_angle(rotation.y,targetAngle,delta*10)
 	if is_being_knocked_back:
 		charging = false
 	if charging:
@@ -61,7 +63,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_chargeup_timeout() -> void:
 	charging = true
-	$charger/AnimationPlayer.play("Charge")
+	_animator.set_blend_time("Telegraph","Charge",0.1)
+	$charger/AnimationPlayer.play("Charge",0.1,3)
 	$Charge.start()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -69,12 +72,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if not charging:
 		target_pos = body.global_position
 		direction = Vector2((target_pos-global_position).normalized().x,(target_pos-global_position).normalized().z)
-		rotation.y = PI/2-direction.angle()
+		targetAngle = PI/2-direction.angle()
+		_animator.set_blend_time("Idle","Telegraph",0.15)
 		$charger/AnimationPlayer.play("Telegraph")
 		$Chargeup.start()
 
 
 func _on_charge_timeout() -> void:
+	_animator.set_blend_time("Charge","Idle",0.1)
 	$charger/AnimationPlayer.play("Idle")
 	charging = false
 	if $Area3D.get_overlapping_bodies():
