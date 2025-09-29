@@ -1,12 +1,12 @@
 # Sacrifice Scavenger  
   
-A game made by Me (Gavan) and Sebastian at Hackclub Daydream Seattle!  
+A game made by TaelsDaFoox and StubblyCamera52 at Hackclub Daydream Seattle!  
 Compatible with keyboard and controller.  
   
 We worked on this over the course of 2 days (12 hours each day)  
 Platformer-Adventure game  
 Multiple types of enemies (goomber, charger, turret)  
-Lots of cute custom models and animations (thanks sebastian)  
+Lots of cute custom models and animations (thanks Taels)  
 Goomber is very nice (trust)  
 A lot of code (yippee)  
   
