@@ -392,6 +392,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0036087036, 5.675246, 0.02
 size = Vector3(7.342336, 0.36121562, 15.269975)
 material = ExtResource("2_5vw27")
 
+[node name="CSGBox3D18" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.479027, 9.475958, -275.62268)
+size = Vector3(61.038696, 18.334839, 1.3366699)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17502594, -0.93510437, -30.347595)
+size = Vector3(54.879593, 18.334839, 46.06613)
+material = ExtResource("4_kek77")
+
 [node name="Goombers" type="Node3D" parent="."]
 
 [node name="Goomba2" parent="Goombers" instance=ExtResource("2_0xm2m")]
@@ -448,12 +458,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.274467, 0.75053865, -169.5
 [node name="Goomba13" parent="Goombers" instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.36547, 3.783612, -141.98486)
 
+[node name="WallGuy" parent="Goombers" instance=ExtResource("11_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.71165, 0.5030065, -251.82312)
+
+[node name="WallGuy3" parent="Goombers" instance=ExtResource("11_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.469616, 18.09864, -306.99884)
+
+[node name="WallGuy2" parent="Goombers" instance=ExtResource("11_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.652153, 1.006013, -279.43536)
+
 [node name="UI" parent="." instance=ExtResource("9_kek77")]
 
 [node name="Sacrifice Door Model" parent="." instance=ExtResource("6_7mycd")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -48.365433, 3.4450245, -130.70705)
 
-[node name="StarcoreFactory" parent="." instance=ExtResource("6_kek77")]
+[node name="Starcore6" parent="." instance=ExtResource("6_kek77")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 23.842243, 5.7678156, -62.46865)
 collectibleName = "At Castle's End"
 
@@ -469,9 +488,10 @@ collectibleName = "Mind the Gap"
 transform = Transform3D(0.64000005, 0, 0, 0, 0.64000005, 0, 0, 0, 0.64000005, 47.07374, 22.200172, -126.55484)
 collectibleName = "One Wall to Another"
 
+[node name="Starcore" parent="." instance=ExtResource("6_kek77")]
+transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, -39.941067, 19.375538, -321.88354)
+collectibleName = "Guarded Wall"
+
 [node name="Starcore5" parent="." instance=ExtResource("6_kek77")]
 transform = Transform3D(0.40960005, 0, 0, 0, 0.40960005, 0, 0, 0, 0.40960005, -14.10766, 19.091835, -82.53906)
 collectibleName = "Middle of Somewhere"
-
-[node name="WallGuy" parent="." instance=ExtResource("11_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2249155, 0.5030065, -253.28656)
