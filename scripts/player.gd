@@ -29,7 +29,8 @@ enum PLAYER_STATES {
 	IN_MENU,
 	ATTACKING,
 	KNOCKBACK,
-	SACRIFICE
+	SACRIFICE,
+	DODGE
 }
 
 var current_player_state: PLAYER_STATES = PLAYER_STATES.BASIC
@@ -95,7 +96,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_on_wall_only() and PlayerGlobalManager.player_can_wall_jump:
 			if Vector2(get_wall_normal().x,get_wall_normal().z).length() > 0.9:
 				player_velocity = (60*Vector3(get_wall_normal().x,0,get_wall_normal().z))+Vector3(0,JUMP_VELOCITY,0)
-	if event.is_action_pressed("Attack") and attack_time==0 and not current_player_state == PLAYER_STATES.SACRIFICE:
+	if event.is_action_pressed("Attack") and attack_time==0 and current_player_state == PLAYER_STATES.BASIC:
 		attack_time=0.35
 		current_player_state=PLAYER_STATES.ATTACKING
 		_playerAnimator.playback_default_blend_time = 0.05
@@ -106,6 +107,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		player_velocity.z *= DASH_MULTIPLIER
 		if player_velocity.y < 0:
 			player_velocity.y = 3
+	if event.is_action_pressed("dodge_roll") and (current_player_state == PLAYER_STATES.BASIC or current_player_state == PLAYER_STATES.ATTACKING):
+			player_velocity = Vector3(sin(_playerModel.rotation.y),0,cos(_playerModel.rotation.y))*-80+Vector3.UP*5
+			current_player_state = PLAYER_STATES.DODGE
+			_playerAnimator.play_section("DodgeRoll",0,1,0.1,2.25)
+			attack_time = 0
 		
 func _physics_process(delta: float) -> void:
 	attack_time=move_toward(attack_time,0,delta)
@@ -115,7 +121,9 @@ func _physics_process(delta: float) -> void:
 			_playerAnimator.set_blend_time("Walk","Fall",0.1)
 			_playerAnimator.set_blend_time("Idle","Fall",0.1)
 			if player_velocity.length()>0:
-					_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
+					#_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
+					if player_input_direction:
+						_playerModel.rotation.y = lerp_angle(_playerModel.rotation.y,PI/2-player_input_direction.rotated(-%CameraPivot.rotation.y).angle(),delta*15)
 			if is_on_floor():
 				_playerAnimator.playback_default_blend_time = 0.1
 				_playerAnimator.set_blend_time("Walk","Idle",0.25)
@@ -143,13 +151,16 @@ func _physics_process(delta: float) -> void:
 				current_player_state=PLAYER_STATES.BASIC
 			_playerAnimator.playback_default_blend_time = 0.25
 		PLAYER_STATES.KNOCKBACK:
-			_playerAnimator.play("Hurt")
+			_playerAnimator.play("Hurt",-1,2)
 		PLAYER_STATES.SACRIFICE:
 			player_velocity.x = move_toward(player_velocity.x, 0,delta*15)
 			player_velocity.z = move_toward(player_velocity.z, 0,delta*15)
 			sacrifice_timer-=delta
 			if sacrifice_timer <= 0:
 				current_player_state = PLAYER_STATES.BASIC
+		PLAYER_STATES.DODGE:
+			pass
+			#_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()+PI
 
 
 
@@ -171,7 +182,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3(Vector2(velocity.x,velocity.z).normalized().x*MAX_SPEED, velocity.y, Vector2(velocity.x,velocity.z).normalized().y*MAX_SPEED)
 	move_and_slide()
 	if is_on_floor():
-		if current_player_state == PLAYER_STATES.KNOCKBACK:
+		if current_player_state == PLAYER_STATES.KNOCKBACK or current_player_state == PLAYER_STATES.DODGE:
 			current_player_state = PLAYER_STATES.BASIC
 
 
