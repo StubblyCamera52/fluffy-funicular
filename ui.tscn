@@ -34,6 +34,11 @@ grow_vertical = 0
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_m6e0p")
+theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/bold_font_size = 15
+theme_override_font_sizes/bold_italics_font_size = 15
+theme_override_font_sizes/italics_font_size = 15
+theme_override_font_sizes/mono_font_size = 15
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -46,8 +51,8 @@ one_shot = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 293.0
+offset_bottom = 146.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
@@ -58,21 +63,25 @@ mouse_filter = 2
 [node name="health" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m6e0p")
+theme_override_font_sizes/font_size = 15
 text = "Health: 100/100"
 
 [node name="xpToNextLevel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m6e0p")
+theme_override_font_sizes/font_size = 16
 text = "XP to next level: 5"
 
 [node name="level" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m6e0p")
+theme_override_font_sizes/font_size = 16
 text = "Level: 1"
 
 [node name="collectibles" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m6e0p")
+theme_override_font_sizes/font_size = 16
 text = "Starcores: 0/7"
 
 [connection signal="timeout" from="Ability Unlock/DisplayTimer" to="." method="_on_display_timer_timeout"]

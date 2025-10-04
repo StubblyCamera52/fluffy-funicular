@@ -21,7 +21,9 @@ PlayerGlobalManager="*res://player_global_manager.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [input]

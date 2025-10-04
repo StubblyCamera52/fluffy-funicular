@@ -97,6 +97,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			if Vector2(get_wall_normal().x,get_wall_normal().z).length() > 0.9:
 				player_velocity = (60*Vector3(get_wall_normal().x,0,get_wall_normal().z))+Vector3(0,JUMP_VELOCITY,0)
 	if event.is_action_pressed("Attack") and attack_time==0 and current_player_state == PLAYER_STATES.BASIC:
+		if player_input_direction:
+				_playerModel.rotation.y = PI/2-player_input_direction.rotated(-%CameraPivot.rotation.y).angle()
 		attack_time=0.35
 		current_player_state=PLAYER_STATES.ATTACKING
 		_playerAnimator.playback_default_blend_time = 0.05
@@ -108,6 +110,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if player_velocity.y < 0:
 			player_velocity.y = 3
 	if event.is_action_pressed("dodge_roll") and (current_player_state == PLAYER_STATES.BASIC or current_player_state == PLAYER_STATES.ATTACKING):
+			if player_input_direction:
+				_playerModel.rotation.y = PI/2-player_input_direction.rotated(-%CameraPivot.rotation.y).angle()
 			player_velocity = Vector3(sin(_playerModel.rotation.y),0,cos(_playerModel.rotation.y))*-80+Vector3.UP*5
 			current_player_state = PLAYER_STATES.DODGE
 			_playerAnimator.play_section("DodgeRoll",0,1,0.1,2.25)
@@ -123,7 +127,7 @@ func _physics_process(delta: float) -> void:
 			if player_velocity.length()>0:
 					#_playerModel.rotation.y = PI/2-Vector2(player_velocity.x,player_velocity.z).angle()
 					if player_input_direction:
-						_playerModel.rotation.y = lerp_angle(_playerModel.rotation.y,PI/2-player_input_direction.rotated(-%CameraPivot.rotation.y).angle(),delta*15)
+						_playerModel.rotation.y = lerp_angle(_playerModel.rotation.y,PI/2-player_input_direction.rotated(-%CameraPivot.rotation.y).angle(),delta*10)
 			if is_on_floor():
 				_playerAnimator.playback_default_blend_time = 0.1
 				_playerAnimator.set_blend_time("Walk","Idle",0.25)
