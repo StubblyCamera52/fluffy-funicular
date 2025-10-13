@@ -11,6 +11,10 @@ extends CharacterBody3D
 @export var damage: int = 0
 @export var identifier := "enemy"
 
+@onready var sfx = $AudioStreamPlayer3D
+var damagesfx = load("res://sounds/enemyhit.wav")
+var destroysfx = load("res://sounds/enemy destroy.wav")
+
 var health: int = max_health
 
 var original_pos: Vector3 = Vector3(0, 1, 0)
@@ -29,12 +33,14 @@ func take_damage(dmg_amount: int) -> void:
 			damage_particle.restart()
 
 func die() -> void:
+	sfx.stream = destroysfx
+	sfx.play()
 	PlayerGlobalManager.give_player_xp(1)
 	if death_particle:
 		death_particle.restart()
 	health = max_health
 	global_position.y -= 100
-	await get_tree().create_timer(20).timeout
+	await get_tree().create_timer(45).timeout
 	global_position = original_pos
 
 func _ready() -> void:

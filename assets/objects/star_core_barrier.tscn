@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://tg6wkhx2pvqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgpiq"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hl87v"]
+material = SubResource("StandardMaterial3D_hgpiq")
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Gradient" id="Gradient_ivkbl"]
+
+[node name="StarCoreBarrier" type="StaticBody3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 1000
+lifetime = 2.0
+mesh = SubResource("SphereMesh_hl87v")
+emission_shape = 3
+emission_box_extents = Vector3(4, 0, 0)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 1, 0)
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_ivkbl")

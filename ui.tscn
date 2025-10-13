@@ -64,7 +64,7 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m6e0p")
 theme_override_font_sizes/font_size = 15
-text = "Health: 100/100"
+text = "Health: 30/30"
 
 [node name="xpToNextLevel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -82,6 +82,6 @@ text = "Level: 1"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m6e0p")
 theme_override_font_sizes/font_size = 16
-text = "Starcores: 0/7"
+text = "Starcores: 0/9"
 
 [connection signal="timeout" from="Ability Unlock/DisplayTimer" to="." method="_on_display_timer_timeout"]

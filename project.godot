@@ -23,7 +23,7 @@ PlayerGlobalManager="*res://player_global_manager.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [input]

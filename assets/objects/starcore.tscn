@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://dcdje2f04xlmw"]
+[gd_scene load_steps=9 format=4 uid="uid://dcdje2f04xlmw"]
 
 [ext_resource type="PackedScene" uid="uid://jpxjff640r74" path="res://assets/models/Starcore.glb" id="1_701nf"]
 [ext_resource type="Script" uid="uid://cxomuvnvdjxwn" path="res://assets/objects/starcore.gd" id="2_hwevu"]
+[ext_resource type="AudioStream" uid="uid://cppiyyoi0uwg2" path="res://sounds/starcore.wav" id="3_ywlf8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hwevu"]
 radius = 0.99393266
@@ -74,5 +75,8 @@ initial_velocity_max = 10.0
 scale_amount_min = 0.5
 scale_amount_max = 1.5
 color_ramp = SubResource("Gradient_ywlf8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource("3_ywlf8")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

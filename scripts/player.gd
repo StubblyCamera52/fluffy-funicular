@@ -21,6 +21,13 @@ extends CharacterBody3D
 var mouse_locked := true
 var attack_time = 0
 var sacrifice_timer = 0
+var spawnpos:=Vector3.ZERO
+
+@onready var sfx = $AudioStreamPlayer3D
+var jumpsfx = load("res://sounds/goober jump.wav")
+var hurtsfx = load("res://sounds/goober hurt.wav")
+var enemyhitsfx = load("res://sounds/enemyhit.wav")
+var starcoresfx = load("res://sounds/starcore.wav")
 
 # player state vars
 enum PLAYER_STATES {
@@ -41,6 +48,7 @@ var times_jumped: int = 0
 var dash_debounce := false
 
 func _ready() -> void:
+	spawnpos=position
 	if OS.has_feature("web"):
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		pass
@@ -56,6 +64,8 @@ func knockback(pos: Vector3):
 	if current_player_state != PLAYER_STATES.SACRIFICE:
 		current_player_state = PLAYER_STATES.KNOCKBACK
 		player_velocity = Vector3(global_position-pos).normalized()*Vector3(1,0,1)*60+Vector3.UP*10
+		sfx.stream = hurtsfx
+		sfx.play()
 
 func playSacrificeAnim(doorpos: Vector3):
 	current_player_state=PLAYER_STATES.SACRIFICE
@@ -93,6 +103,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_on_floor() or times_jumped < PlayerGlobalManager.player_num_jumps:
 			times_jumped += 1
 			player_velocity.y=JUMP_VELOCITY
+			sfx.stream = jumpsfx
+			sfx.play()
 		if is_on_wall_only() and PlayerGlobalManager.player_can_wall_jump:
 			if Vector2(get_wall_normal().x,get_wall_normal().z).length() > 0.9:
 				player_velocity = (60*Vector3(get_wall_normal().x,0,get_wall_normal().z))+Vector3(0,JUMP_VELOCITY,0)
@@ -118,6 +130,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			attack_time = 0
 		
 func _physics_process(delta: float) -> void:
+	if position.y<-50:
+		position=spawnpos
+		velocity=Vector3.ZERO
+	if PlayerGlobalManager.player_health <= 0:
+		position=spawnpos
+		PlayerGlobalManager.player_health=PlayerGlobalManager.player_max_health
+		velocity=Vector3.ZERO
 	attack_time=move_toward(attack_time,0,delta)
 	# State Machine
 	match current_player_state:
@@ -150,6 +169,9 @@ func _physics_process(delta: float) -> void:
 		PLAYER_STATES.ATTACKING:
 			if attack_time < 0.25 and attack_time>0.05:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
+					if body.dmg_debounce <= 0:
+						body.get_node("AudioStreamPlayer3D").stream = enemyhitsfx
+						body.get_node("AudioStreamPlayer3D").play()
 					body.take_damage(PlayerGlobalManager.player_level*3+4)
 			if attack_time<=0:
 				current_player_state=PLAYER_STATES.BASIC

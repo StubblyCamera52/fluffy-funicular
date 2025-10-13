@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://501gglmoon7g"]
+[gd_scene load_steps=19 format=3 uid="uid://501gglmoon7g"]
 
 [ext_resource type="PackedScene" uid="uid://6ru8poy7tgm4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drr3esl1pjkv1" path="res://enemies/goomba.tscn" id="2_0xm2m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://2hccqskyxo5i" path="res://assets/models/sign.glb" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://rss6l1jqgbfp" path="res://enemies/wall_guy.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://oyd40uvfb3mu" path="res://assets/models/sign2.glb" id="12_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://ccr0phxdkihf3" path="res://assets/models/sign3.glb" id="14_w48qg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_272bh"]
 panorama = ExtResource("2_7mycd")
@@ -53,8 +54,8 @@ navigation_mesh = SubResource("NavigationMesh_ig7tw")
 use_collision = true
 
 [node name="Floor" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.271324, 0, -67.62256)
-size = Vector3(487.41858, 1, 666.88416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.03251, 0, -152.10823)
+size = Vector3(252.47842, 1, 400.12003)
 material = ExtResource("2_5vw27")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
@@ -404,6 +405,119 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17502594, -0.93510437, -30
 size = Vector3(54.879593, 18.334839, 46.06613)
 material = ExtResource("4_kek77")
 
+[node name="CSGBox3D20" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.62757, 9.513458, -151.63062)
+size = Vector3(3.5253181, 39.231964, 403.16644)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.920303, 9.513458, -351.59686)
+size = Vector3(252.62108, 39.231964, 3.2339935)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.79823, 9.513458, -151.45914)
+size = Vector3(2.8652267, 39.231964, 403.50946)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.920303, 9.513458, 46.90973)
+size = Vector3(252.62108, 39.231964, 3.2339935)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.95404, 11.288513, -302.78488)
+size = Vector3(8.952514, 27.57843, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.305309, -10.847256, 10.439117)
+size = Vector3(8.952514, 5.883919, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43340302, -7.8987007, 9.876648)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18655, -4.16136, 0.09338379)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59693146, -0.98050785, -10.077454)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.46941, 1.6235743, 0.18057251)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.31385422, 4.1134186, 8.933716)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.103844, 6.155491, 0.02520752)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="Starcore" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27" instance=ExtResource("6_kek77")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.12916183, 15.856541, -0.44137573)
+collectibleName = "Spiral Tower's Peak"
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D27"]
+transform = Transform3D(-3.8715605e-08, 0.46423927, -0.8857098, 2.0292543e-08, 0.8857098, 0.46423927, 1, 0, -4.371139e-08, -0.23665237, 9.854506, -9.808685)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D"]
+transform = Transform3D(-0.9864346, 0.14314151, -0.080357715, 0.1617813, 0.9306701, -0.3281469, 0.027815074, -0.3366958, -0.9412026, -123.7754, 10.341906, -36.696854)
+size = Vector3(8.952514, 27.57843, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43340302, -7.8987007, 9.876648)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.18655, -4.16136, 0.09338379)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59693146, -0.98050785, -10.077454)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.46941, 1.6235743, 0.18057251)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.31385422, 4.1134186, 8.933716)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.103844, 6.155491, 0.02520752)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
+[node name="Starcore" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28" instance=ExtResource("6_kek77")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.12916183, 15.856541, -0.44137573)
+collectibleName = "Leaning Tower of Asset Reuse"
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="NavigatableLevel/CSGCombiner3D/CSGBox3D28"]
+transform = Transform3D(-3.8715605e-08, 0.46423927, -0.8857098, 2.0292543e-08, 0.8857098, 0.46423927, 1, 0, -4.371139e-08, -0.23665237, 9.854506, -9.808685)
+size = Vector3(10.12323, 1.6377602, 10.185356)
+material = ExtResource("4_kek77")
+
 [node name="Goombers" type="Node3D" parent="."]
 
 [node name="Goomba2" parent="Goombers" instance=ExtResource("2_0xm2m")]
@@ -503,3 +617,6 @@ collectibleName = "Guarded Wall"
 [node name="Starcore5" parent="." instance=ExtResource("6_kek77")]
 transform = Transform3D(0.40960005, 0, 0, 0, 0.40960005, 0, 0, 0, 0.40960005, -14.10766, 19.091835, -82.53906)
 collectibleName = "Middle of Somewhere"
+
+[node name="sign3" parent="." instance=ExtResource("14_w48qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.142956, 3.904675, -50.919296)

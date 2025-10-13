@@ -4,7 +4,8 @@ signal took_damage(pos: Vector3)
 signal xp_changed()
 signal player_obtained_collectable()
 
-var player_health := 100
+var player_health := 30
+var player_max_health :=30
 var player_xp := 0
 var player_level := 1
 var player_collectables := 0
@@ -30,16 +31,13 @@ func set_player_var(player: CharacterBody3D):
 func damage_player(dmgAmount: int, pos: Vector3):
 	player_health -= dmgAmount
 	took_damage.emit(pos)
-	if player_health <= 0:
-		for key in player_powerups.keys():
-			player_powerups[key].deactivate()
-			player_powerups.erase(key)
-		get_tree().reload_current_scene()
 
 func give_player_xp(xpAmount: int):
 	player_xp += xpAmount
 	print(player_xp)
 	player_level = floor(player_xp/5)+1
+	player_max_health = (player_level-1)*15+30
+	player_health = clamp(player_health,0,player_max_health)
 	print(player_level)
 	xp_changed.emit()
 	for key in player_powerups.keys():

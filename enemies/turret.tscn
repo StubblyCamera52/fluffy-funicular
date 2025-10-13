@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://2f2frnk5w48q"]
+[gd_scene load_steps=10 format=3 uid="uid://2f2frnk5w48q"]
 
 [ext_resource type="Script" uid="uid://cs2q7nkrb50ks" path="res://enemies/turret.gd" id="1_43anh"]
 [ext_resource type="PackedScene" uid="uid://d4b5q3rbvmto0" path="res://assets/models/turret.glb" id="2_ni5yt"]
+[ext_resource type="AudioStream" uid="uid://cvvcp0l0fujnx" path="res://sounds/goober jump.wav" id="3_6kck2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43anh"]
 size = Vector3(1, 1.8702393, 1)
@@ -98,6 +99,9 @@ scale_amount_min = 0.5
 scale_amount_max = 1.5
 color = Color(1, 0.84705883, 0.5411765, 1)
 color_ramp = SubResource("Gradient_l4b7k")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_6kck2")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
