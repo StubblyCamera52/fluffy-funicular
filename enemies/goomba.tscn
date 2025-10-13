@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2m8fd326ca7v" path="res://enemies/goomba.gd" id="1_0xjyw"]
 [ext_resource type="PackedScene" uid="uid://djmhg252dajnb" path="res://assets/models/goombatype.glb" id="2_k53gf"]
-[ext_resource type="AudioStream" uid="uid://cvvcp0l0fujnx" path="res://sounds/goober jump.wav" id="3_ac7lm"]
+[ext_resource type="AudioStream" uid="uid://d0waau4b1hvun" path="res://sounds/enemy destroy.wav" id="3_ac7lm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xjyw"]
 size = Vector3(0.9133301, 1.1173096, 0.8937988)
@@ -88,7 +88,7 @@ scale_amount_max = 1.5
 color = Color(1, 0.84705883, 0.5411765, 1)
 color_ramp = SubResource("Gradient_k53gf")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ac7lm")
 
 [connection signal="body_entered" from="TargetingArea" to="." method="_on_targeting_area_body_entered"]

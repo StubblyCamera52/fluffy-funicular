@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://6ru8poy7tgm4"]
+[gd_scene load_steps=8 format=3 uid="uid://6ru8poy7tgm4"]
 
 [ext_resource type="Script" uid="uid://cfwk60q5jp5wb" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://6ds03put2t5t" path="res://assets/objects/player_model.tscn" id="2_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cvvcp0l0fujnx" path="res://sounds/goober jump.wav" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://b54qwdrgwm5fy" path="res://music/Cooler.mp3" id="4_hqtel"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 height = 1.5
@@ -61,6 +62,11 @@ one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_i3pqv")
+
+[node name="Music1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hqtel")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="EnemyCollisionArea" to="." method="_on_enemy_collision_area_body_entered"]
 [connection signal="body_entered" from="PlayerModel/AttackCollider" to="." method="_on_attack_collider_body_entered"]

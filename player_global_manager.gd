@@ -12,6 +12,7 @@ var player_collectables := 0
 var player_powerups: Dictionary[String,GenericPowerUp] = {}
 var player_model: CharacterBody3D
 signal sacrifice(doorpos: Vector3)
+var bgm :=1
 
 var player_num_jumps: int = 1
 var player_can_wall_jump: bool = false

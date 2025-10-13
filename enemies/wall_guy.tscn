@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkfascnyveqg4" path="res://enemies/wall_guy.gd" id="1_wxn2a"]
 [ext_resource type="PackedScene" uid="uid://hih0x0ccj5wb" path="res://assets/models/charger.glb" id="2_thjt0"]
-[ext_resource type="AudioStream" uid="uid://cvvcp0l0fujnx" path="res://sounds/goober jump.wav" id="3_4cjel"]
+[ext_resource type="AudioStream" uid="uid://d0waau4b1hvun" path="res://sounds/enemy destroy.wav" id="3_4cjel"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_thjt0"]
 size = Vector3(2.116272, 2.0067139, 2.2922363)
@@ -90,7 +90,7 @@ scale_amount_max = 1.5
 color = Color(1, 0.84705883, 0.5411765, 1)
 color_ramp = SubResource("Gradient_7lstb")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4cjel")
 
 [connection signal="timeout" from="Chargeup" to="." method="_on_chargeup_timeout"]

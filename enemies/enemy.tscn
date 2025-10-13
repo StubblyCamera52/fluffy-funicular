@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgxb4xsmsuqga"]
 
 [ext_resource type="Script" uid="uid://dayute38a7ih5" path="res://enemies/enemy.gd" id="1_7k104"]
-[ext_resource type="AudioStream" uid="uid://dxs0pqael584j" path="res://sounds/enemyhit.wav" id="2_7frlh"]
+[ext_resource type="AudioStream" uid="uid://d0waau4b1hvun" path="res://sounds/enemy destroy.wav" id="2_7frlh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7xaro"]
 
@@ -21,5 +21,5 @@ material = SubResource("StandardMaterial3D_7k104")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7frlh")

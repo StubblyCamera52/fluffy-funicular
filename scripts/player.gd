@@ -28,6 +28,8 @@ var jumpsfx = load("res://sounds/goober jump.wav")
 var hurtsfx = load("res://sounds/goober hurt.wav")
 var enemyhitsfx = load("res://sounds/enemyhit.wav")
 var starcoresfx = load("res://sounds/starcore.wav")
+#@onready var bgm1player = $Music1
+#@onready var bgm2player = $Music2
 
 # player state vars
 enum PLAYER_STATES {
@@ -130,6 +132,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			attack_time = 0
 		
 func _physics_process(delta: float) -> void:
+	#if PlayerGlobalManager.bgm==1:
+	#	bgm1player.volume_db=lerpf(bgm1player.volume_db,0,delta*2)
+	#	bgm2player.volume_db=lerpf(bgm2player.volume_db,-50,delta*2)
+	#else:
+	#	bgm1player.volume_db=lerpf(bgm1player.volume_db,-50,delta*2)
+	#	bgm2player.volume_db=lerpf(bgm2player.volume_db,0,delta*2)
 	if position.y<-50:
 		position=spawnpos
 		velocity=Vector3.ZERO
@@ -170,8 +178,8 @@ func _physics_process(delta: float) -> void:
 			if attack_time < 0.25 and attack_time>0.05:
 				for body in $PlayerModel/AttackCollider.get_overlapping_bodies():
 					if body.dmg_debounce <= 0:
-						body.get_node("AudioStreamPlayer3D").stream = enemyhitsfx
-						body.get_node("AudioStreamPlayer3D").play()
+						body.get_node("AudioStreamPlayer").stream = enemyhitsfx
+						body.get_node("AudioStreamPlayer").play()
 					body.take_damage(PlayerGlobalManager.player_level*3+4)
 			if attack_time<=0:
 				current_player_state=PLAYER_STATES.BASIC

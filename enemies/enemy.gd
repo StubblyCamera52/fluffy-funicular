@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var damage: int = 0
 @export var identifier := "enemy"
 
-@onready var sfx = $AudioStreamPlayer3D
+@onready var sfx = $AudioStreamPlayer
 var damagesfx = load("res://sounds/enemyhit.wav")
 var destroysfx = load("res://sounds/enemy destroy.wav")
 
